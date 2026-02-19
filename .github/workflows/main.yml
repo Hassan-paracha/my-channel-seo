@@ -1,14 +1,16 @@
-name: YouTube SEO Engine
+name: Global SEO Rolling Cycle
 on:
   schedule:
     - cron: "0 0 * * *" # Runs daily at midnight
-  workflow_dispatch: # Allows manual testing
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  seo-cycle:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Crucial for saving the DB
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Python
@@ -16,30 +18,30 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Correct Libraries
+      - name: Dependencies
         run: |
-          # Remove legacy packages to avoid namespace conflicts
           pip uninstall -y google google-generativeai
-          # Install the modern 2026 SDK and scraper
           pip install -U google-genai yt-dlp
 
-      - name: Run SEO Engine
+      - name: Run Rolling Engine
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python engine.py
 
-      - name: Deploy to Public Repo
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "SEO-Cycle-Bot"
+          git config --global user.email "bot@seo.com"
+          git add video_db.json index.html
+          git diff-index --quiet HEAD || (git commit -m "Daily Refresh: $(date)" && git push)
+          
+      - name: Deploy to Public Hub
         env:
           PAT: ${{ secrets.PAT }}
         run: |
-          git config --global user.name "SEO-Bot"
-          git config --global user.email "bot@seo.com"
-          
-          # Replace YOUR_USERNAME and YOUR_PUBLIC_REPO_NAME
-          git clone --single-branch --branch main https://x-access-token:${PAT}@github.com/Hassan-paracha/my-seo-hub.git target_repo
-          
-          cp index.html target_repo/
-          cd target_repo
+          # Cloning and updating your public repo
+          git clone https://x-access-token:${PAT}@github.com/Hassan-paracha/my-seo-hub.git target
+          cp index.html target/
+          cd target
           git add .
-          # Only push if there's a change
-          git diff-index --quiet HEAD || (git commit -m "SEO Update: $(date)" && git push origin main)
+          git diff-index --quiet HEAD || (git commit -m "SEO Hub Update" && git push origin main)
