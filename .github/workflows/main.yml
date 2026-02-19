@@ -1,0 +1,26 @@
+name: YouTube SEO Engine
+on:
+  schedule: [{cron: "0 0 * * *"}] # Runs daily
+  workflow_dispatch: # Lets you test manually
+
+jobs:
+  run-seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        run: pip install yt-dlp google-generativeai
+      - name: Run Script
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python engine.py
+      - name: Deploy to Public Repo
+        env:
+          PAT: ${{ secrets.PAT }}
+        run: |
+          git config --global user.name "SEO-Bot"
+          git config --global user.email "bot@seo.com"
+          git clone https://x-access-token:$PAT@github.com/YOUR_USERNAME/my-seo-hub.git
+          cp index.html my-seo-hub/
+          cd my-seo-hub
+          git add . && git commit -m "SEO Update" && git push
