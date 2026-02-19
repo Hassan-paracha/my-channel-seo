@@ -20,7 +20,7 @@ jobs:
         run: |
           git config --global user.name "SEO-Bot"
           git config --global user.email "bot@seo.com"
-          git clone https://x-access-token:$PAT@github.com/YOUR_USERNAME/my-seo-hub.git
+          git clone https://x-access-token:$PAT@github.com/Hassan-paracha/my-seo-hub.git
           cp index.html my-seo-hub/
           cd my-seo-hub
           git add . && git commit -m "SEO Update" && git push
