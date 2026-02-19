@@ -8,7 +8,8 @@ CHANNEL_HANDLE = "@HassanParacha-c3g"  # Change to your actual handle
 PUBLIC_SITE_URL = "https://Hassan-paracha.github.io/my-seo-hub/"
 
 def get_latest_content():
-    base_url = f"https://www.youtube.com/@HassanParacha-c3g"
+    base_url = f"https://www.youtube.com/{CHANNEL_HANDLE}"
+    # Scraping Videos, Shorts, and Streams tabs
     tabs = ["/videos", "/shorts", "/streams"]
     latest_items = []
     
@@ -31,8 +32,7 @@ def get_latest_content():
     return latest_items
 
 def polish_metadata(item):
-    # Initialize the new Google GenAI Client
-    # It automatically picks up 'GEMINI_API_KEY' from environment variables
+    # Initialize the modern 2026 Client
     client = genai.Client()
     
     raw_title = item.get('title', 'YouTube Content')
@@ -40,18 +40,18 @@ def polish_metadata(item):
     
     prompt = f"""
     You are an SEO expert for a Pakistani YouTube channel.
-    Type: {c_type}
+    Content Type: {c_type}
     Hinglish Title: {raw_title}
     
     Task:
-    1. Fix Roman Urdu spellings.
+    1. Fix Roman Urdu/Hinglish spellings.
     2. Make it catchy for a Pakistani family audience.
-    3. Add 2 English SEO keywords.
-    4. Return ONLY the new title text.
+    3. Add 2 high-volume English SEO keywords.
+    4. Return ONLY the new title text without quotes.
     """
     
     try:
-        # Using the modern Gemini 3 Flash model
+        # Using the current high-performance model
         response = client.models.generate_content(
             model="gemini-3-flash-preview",
             contents=prompt
@@ -66,15 +66,14 @@ def generate_hub(items):
     for item in items:
         new_title = polish_metadata(item)
         v_id = item['id']
-        # Fix for Shorts URL structure
-        v_url = f"https://www.youtube.com/watch?v={v_id}" if "/shorts/" not in item.get('url', '') else item.get('url', f"https://www.youtube.com/shorts/{v_id}")
+        v_url = item.get('url', f"https://www.youtube.com/watch?v={v_id}")
         
-        # Schema for Google Search
+        # SEO Video Schema
         schema = {
             "@context": "https://schema.org",
             "@type": "VideoObject",
             "name": new_title,
-            "description": f"Latest {item['content_type']} from our Pakistani Family Channel.",
+            "description": f"Watch our latest {item['content_type']} from Pakistan.",
             "thumbnailUrl": f"https://i.ytimg.com/vi/{v_id}/maxresdefault.jpg",
             "uploadDate": "2026-02-19",
             "embedUrl": f"https://www.youtube.com/embed/{v_id}"
@@ -88,7 +87,7 @@ def generate_hub(items):
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/{v_id}" frameborder="0" allowfullscreen></iframe>
             </div>
-            <a class="btn" href="{v_url}" target="_blank">Watch on YouTube</a>
+            <a class="btn" href="{v_url}" target="_blank">View on YouTube</a>
         </div>
         """
 
@@ -98,20 +97,18 @@ def generate_hub(items):
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Family Entertainment Hub</title>
+        <title>Family Vlog SEO Hub</title>
         <style>
-            body {{ font-family: 'Segoe UI', sans-serif; background: #fafafa; color: #333; margin: 0; padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; }}
-            .card {{ background: #fff; border: 1px solid #ddd; border-radius: 12px; width: 340px; margin: 15px; padding: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }}
-            h2 {{ font-size: 1.1rem; margin: 10px 0; height: 3em; overflow: hidden; }}
-            .badge {{ display: inline-block; background: #ff0000; color: #fff; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: bold; }}
-            .video-container {{ position: relative; padding-bottom: 56.25%; height: 0; border-radius: 8px; overflow: hidden; background: #000; }}
+            body {{ font-family: 'Segoe UI', sans-serif; background: #f0f2f5; margin: 0; padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; }}
+            .card {{ background: #fff; border-radius: 15px; width: 350px; margin: 15px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }}
+            h2 {{ font-size: 1.2rem; color: #1c1e21; height: 2.8em; overflow: hidden; }}
+            .badge {{ background: #ff0000; color: #fff; padding: 5px 12px; border-radius: 50px; font-size: 10px; font-weight: bold; text-transform: uppercase; }}
+            .video-container {{ position: relative; padding-bottom: 56.25%; height: 0; border-radius: 10px; overflow: hidden; margin: 10px 0; }}
             .video-container iframe {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; }}
-            .btn {{ display: block; margin-top: 15px; background: #065fd4; color: white; text-decoration: none; padding: 10px; border-radius: 6px; text-align: center; font-weight: bold; }}
+            .btn {{ display: block; background: #0084ff; color: #fff; text-decoration: none; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; }}
         </style>
     </head>
-    <body>
-        {cards_html}
-    </body>
+    <body>{cards_html}</body>
     </html>
     """
     with open("index.html", "w", encoding="utf-8") as f:
