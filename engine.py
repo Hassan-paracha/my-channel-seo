@@ -1,25 +1,46 @@
 import os, yt_dlp, google.generativeai as genai
 
-# 1. Scrape latest video (No API Key needed)
-def get_latest():
-    # Replace with your channel handle or URL
-    url = "https://www.youtube.com/@YourChannelHandle/videos"
+# 1. Scraper that understands Videos, Shorts, and Streams
+def get_all_content():
+    base_url = "https://www.youtube.com/@HassanParacha-c3g"
+    # We check all three potential tabs
+    tabs = ["/videos", "/shorts", "/streams"]
+    all_entries = []
+    
     with yt_dlp.YoutubeDL({'quiet': True, 'extract_flat': True}) as ydl:
-        return ydl.extract_info(url, download=False)['entries'][0]
+        for tab in tabs:
+            try:
+                result = ydl.extract_info(base_url + tab, download=False)
+                if 'entries' in result and result['entries']:
+                    # Take the latest item from each tab
+                    all_entries.append(result['entries'][0])
+            except:
+                continue # Skip if a tab is empty (e.g., no live streams)
+    return all_entries
 
-# 2. AI Polisher (Fixing your Hinglish)
-def polish(title):
+# 2. AI Polisher with Content-Type awareness
+def polish(title, url):
+    is_short = "/shorts/" in url
     genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
     model = genai.GenerativeModel('gemini-pro')
-    # Custom instruction for your niche
-    prompt = f"Convert this Roman Urdu/Hinglish title into a high-authority Pakistani family vlog title. Fix spellings and add 2 SEO keywords: {title}"
+    
+    context = "Shorts" if is_short else "Video/Live"
+    prompt = f"Targeting a Pakistani family audience, rewrite this {context} title for SEO. Use clean Roman Urdu and add viral keywords: {title}"
+    
     return model.generate_content(prompt).text
 
-# 3. Create the SEO Webpage
-v = get_latest()
-new_title = polish(v['title'])
-html = f"<html><head><title>{new_title}</title></head><body><h1>{new_title}</h1>" \
-       f"<iframe src='https://www.youtube.com/embed/{v['id']}'></iframe></body></html>"
+# 3. Generating the Hub
+entries = get_all_content()
+html_list = ""
 
-with open("index.html", "w") as f: f.write(html)
-print(f"Optimized: {new_title}")
+for entry in entries:
+    clean_title = polish(entry['title'], entry['url'])
+    html_list += f"""
+    <div class='content-card'>
+        <h2>{clean_title}</h2>
+        <a href='{entry['url']}'>Watch on YouTube</a>
+    </div>
+    """
+
+with open("index.html", "w") as f:
+    f.write(f"<html><body>{html_list}</body></html>")
