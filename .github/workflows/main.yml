@@ -1,26 +1,45 @@
 name: YouTube SEO Engine
 on:
-  schedule: [{cron: "0 0 * * *"}] # Runs daily
-  workflow_dispatch: # Lets you test manually
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at midnight
+  workflow_dispatch: # Allows manual testing
 
 jobs:
-  run-seo:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Setup Python
-        run: pip install yt-dlp google-generativeai
-      - name: Run Script
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Correct Libraries
+        run: |
+          # Remove legacy packages to avoid namespace conflicts
+          pip uninstall -y google google-generativeai
+          # Install the modern 2026 SDK and scraper
+          pip install -U google-genai yt-dlp
+
+      - name: Run SEO Engine
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python engine.py
+
       - name: Deploy to Public Repo
         env:
           PAT: ${{ secrets.PAT }}
         run: |
           git config --global user.name "SEO-Bot"
           git config --global user.email "bot@seo.com"
-          git clone https://x-access-token:$PAT@github.com/Hassan-paracha/my-seo-hub.git
-          cp index.html my-seo-hub/
-          cd my-seo-hub
-          git add . && git commit -m "SEO Update" && git push
+          
+          # Replace YOUR_USERNAME and YOUR_PUBLIC_REPO_NAME
+          git clone --single-branch --branch main https://x-access-token:${PAT}@github.com/Hassan-paracha/my-seo-hub.git target_repo
+          
+          cp index.html target_repo/
+          cd target_repo
+          git add .
+          # Only push if there's a change
+          git diff-index --quiet HEAD || (git commit -m "SEO Update: $(date)" && git push origin main)
