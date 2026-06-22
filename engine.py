@@ -154,6 +154,32 @@ def run_rolling_cycle():
 
 if __name__ == "__main__":
     run_rolling_cycle()
+    full_html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="QyDSUhm4hfRGneKuDBC1rA-p19E7Y2lI_Eh9krE5nVY" />
+    <title>Hassan SEO Hub | Viral Shorts & Vlogs</title>
+    <style>
+        body {{ font-family: sans-serif; background: #f0f2f5; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; padding: 25px; }}
+        .card {{ background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }}
+        .video-container {{ position: relative; padding-bottom: 56.25%; height: 0; }}
+        .video-container iframe {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px; border: none; }}
+        .btn {{ display: block; text-align: center; background: #ff0000; color: #fff; text-decoration: none; padding: 12px; margin-top: 10px; border-radius: 8px; font-weight: bold; }}
+        h3 {{ font-size: 15px; height: 40px; overflow: hidden; color: #333; }}
+    </style>
+</head>
+<body>
+    {cards_html}
+</body>
+</html>"""
+    
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(full_html)
+
+if __name__ == "__main__":
+    run_rolling_cycle()
 import os
 import yt_dlp
 from google import genai
