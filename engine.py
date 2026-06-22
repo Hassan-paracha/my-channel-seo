@@ -8,9 +8,9 @@ from datetime import datetime
 # --- CONFIGURATION ---
 CHANNEL_HANDLE = "@HassanParacha-c3g" # Ensure this is your actual @handle
 DB_FILE = "video_db.json"
-DAILY_INDEX_LIMIT = 180  
-BATCH_SIZE = 5          
-COOLDOWN = 65           
+DAILY_INDEX_LIMIT = 18  
+BATCH_SIZE = 3          
+COOLDOWN = 120           
 
 def load_db():
     if os.path.exists(DB_FILE):
