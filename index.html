@@ -1,4 +1,102 @@
-<!DOCTYPE html>
+import os
+import yt_dlp
+from google import genai
+import json
+import time
+from datetime import datetime
+
+# --- CONFIGURATION ---
+CHANNEL_HANDLE = "@HassanParacha-c3g" # Ensure this is your actual @handle
+DB_FILE = "video_db.json"
+DAILY_INDEX_LIMIT = 18  
+BATCH_SIZE = 5          
+COOLDOWN = 120           
+
+def load_db():
+    if os.path.exists(DB_FILE):
+        try:
+            with open(DB_FILE, "r") as f:
+                return json.load(f)
+        except: return {}
+    return {}
+
+def save_db(db):
+    with open(DB_FILE, "w", encoding="utf-8") as f:
+        json.dump(db, f, indent=4)
+
+def get_channel_videos():
+    """POWER SCRAPE: Uses the Uploads Playlist to find 100% of content."""
+    base_url = f"https://www.youtube.com/{CHANNEL_HANDLE}/videos"
+    ydl_opts = {'quiet': True, 'extract_flat': True, 'playlist_items': '1:500'}
+    
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        try:
+            channel_info = ydl.extract_info(base_url, download=False)
+            channel_id = channel_info.get('id')
+            if channel_id and channel_id.startswith('UC'):
+                # Convert Channel ID to Uploads Playlist ID
+                uploads_id = 'UU' + channel_id[2:]
+                uploads_url = f"https://www.youtube.com/playlist?list={uploads_id}"
+                print(f"Accessing Master List: {uploads_url}")
+                full_result = ydl.extract_info(uploads_url, download=False)
+                return full_result.get('entries', [])
+            return channel_info.get('entries', [])
+        except Exception as e:
+            print(f"Scrape Error: {e}")
+            return []
+
+def ai_polish(title):
+    client = genai.Client()
+    prompt = f"Optimize this title for Pakistani and india trending YouTube SEO. Use Hinglish + English keywords. Return ONLY the title: {title}"
+    try:
+        response = client.models.generate_content(model="gemini-3-flash-preview", contents=prompt)
+        return response.text.strip().replace('"', '')
+    except:
+        return title
+
+def run_rolling_cycle():
+    db = load_db()
+    all_videos = get_channel_videos()
+    today_str = datetime.now().strftime("%Y-%m-%d")
+
+    for v in all_videos:
+        v_id = v.get('id')
+        if v_id and v_id not in db:
+            db[v_id] = {
+                "title": v.get('title', 'YouTube Video'),
+                "last_refreshed": "2000-01-01",
+                "url": f"https://www.youtube.com/watch?v={v_id}"
+            }
+
+    sorted_ids = sorted(db.keys(), key=lambda x: db[x].get('last_refreshed', "2000-01-01"))
+    to_process = sorted_ids[:DAILY_INDEX_LIMIT]
+
+    print(f"Library: {len(db)}. Processing {len(to_process)} today...")
+
+    for i in range(0, len(to_process), BATCH_SIZE):
+        batch = to_process[i:i+BATCH_SIZE]
+        for v_id in batch:
+            db[v_id]['title'] = ai_polish(db[v_id]['title'])
+            db[v_id]['last_refreshed'] = today_str
+        save_db(db)
+        if i + BATCH_SIZE < len(to_process):
+            time.sleep(COOLDOWN)
+
+    sorted_for_display = sorted(db.items(), key=lambda x: x[1]['last_refreshed'], reverse=True)
+    
+    cards_html = "".join([f"""
+        <div class="card">
+            <script type="application/ld+json">
+            {{"@context":"https://schema.org","@type":"VideoObject","name":"{v['title']}","thumbnailUrl":"https://i.ytimg.com/vi/{vid}/hqdefault.jpg","uploadDate":"{v['last_refreshed']}"}}
+            </script>
+            <h3>{v['title']}</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/{vid}" loading="lazy" frameborder="0"></iframe>
+            </div>
+            <a class="btn" href="{v['url']}" target="_blank">Watch Video</a>
+        </div>""" for vid, v in sorted_for_display])
+
+    full_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset='UTF-8'>
@@ -6,166 +104,24 @@
     <meta name="google-site-verification" content="QyDSUhm4hfRGneKuDBC1rA-p19E7Y2lI_Eh9krE5nVY" />
     <title>Hassan SEO Hub | Viral Shorts & Vlogs</title>
     <style>
-        body { font-family: sans-serif; background: #f0f2f5; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; padding: 25px; }
-        .card { background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px; border: none; }
-        .btn { display: block; text-align: center; background: #ff0000; color: #fff; text-decoration: none; padding: 12px; margin-top: 10px; border-radius: 8px; font-weight: bold; }
-        h3 { font-size: 15px; height: 40px; overflow: hidden; color: #333; }
+        body {{ font-family: sans-serif; background: #f0f2f5; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; padding: 25px; }}
+        .card {{ background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }}
+        .video-container {{ position: relative; padding-bottom: 56.25%; height: 0; }}
+        .video-container iframe {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px; border: none; }}
+        .btn {{ display: block; text-align: center; background: #ff0000; color: #fff; text-decoration: none; padding: 12px; margin-top: 10px; border-radius: 8px; font-weight: bold; }}
+        h3 {{ font-size: 15px; height: 40px; overflow: hidden; color: #333; }}
     </style>
 </head>
 <body>
+    {cards_html}
+</body>
+</html>"""
     
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Middle Class Ka Sapna Sach Hogaya! 😭 My First Bike Delivery 🏍️ #shorts #viral #trending #bike","thumbnailUrl":"https://i.ytimg.com/vi/fCNcfEIo5a4/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Middle Class Ka Sapna Sach Hogaya! 😭 My First Bike Delivery 🏍️ #shorts #viral #trending #bike</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/fCNcfEIo5a4" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=fCNcfEIo5a4" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"😭 Gareeb Ki Majboori: Beech Sadak Pe Bike Kharab | Middle Class Struggle Is Real #shorts #viral #trending","thumbnailUrl":"https://i.ytimg.com/vi/YT4wUdxzs8Y/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>😭 Gareeb Ki Majboori: Beech Sadak Pe Bike Kharab | Middle Class Struggle Is Real #shorts #viral #trending</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/YT4wUdxzs8Y" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=YT4wUdxzs8Y" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Papa Ko Boht Pareshan Kiya 😂 Wait For End! 😱 #shorts #funny #comedy #viral #trending","thumbnailUrl":"https://i.ytimg.com/vi/aHQaH99uN8c/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Papa Ko Boht Pareshan Kiya 😂 Wait For End! 😱 #shorts #funny #comedy #viral #trending</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/aHQaH99uN8c" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=aHQaH99uN8c" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Gareeb Ki Bike 🏍️ Start Kyun Nahi Ho Rahi? 😭 Bike Starting Problem Solve #shorts #viral #trending #gareeb #bike","thumbnailUrl":"https://i.ytimg.com/vi/QwhkC6vzL8U/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Gareeb Ki Bike 🏍️ Start Kyun Nahi Ho Rahi? 😭 Bike Starting Problem Solve #shorts #viral #trending #gareeb #bike</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/QwhkC6vzL8U" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=QwhkC6vzL8U" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Gareeb Ki Bike 🏍️ dekh kar Log Hairan 😱 Public Reaction in Gali 🔥 #shorts #viral #trending","thumbnailUrl":"https://i.ytimg.com/vi/4jm1wfQyygU/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Gareeb Ki Bike 🏍️ dekh kar Log Hairan 😱 Public Reaction in Gali 🔥 #shorts #viral #trending</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/4jm1wfQyygU" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=4jm1wfQyygU" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Beech Sadak Is Gareeb Ki Bike Ruk Gayi 🏍️🥺 Phir Jo Hua Dil Jeet Liya ❤️ Humanity Still Exists! #shorts #viral #respect","thumbnailUrl":"https://i.ytimg.com/vi/cfeJhnTgIoo/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Beech Sadak Is Gareeb Ki Bike Ruk Gayi 🏍️🥺 Phir Jo Hua Dil Jeet Liya ❤️ Humanity Still Exists! #shorts #viral #respect</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/cfeJhnTgIoo" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=cfeJhnTgIoo" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Sabse Sasti Bike Mandi 2024 😱 Second Hand Bike Market Price | Cheapest Used Bikes #shorts #bikemandi #viral","thumbnailUrl":"https://i.ytimg.com/vi/3-E5dUHOnHE/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Sabse Sasti Bike Mandi 2024 😱 Second Hand Bike Market Price | Cheapest Used Bikes #shorts #bikemandi #viral</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/3-E5dUHOnHE" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=3-E5dUHOnHE" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Gareeb Ki Bebasi 💔 Bike Start Kyun Nahi Hui? 😭 Poor Man Emotional Struggle #shorts #viral #trending","thumbnailUrl":"https://i.ytimg.com/vi/kP0GhllGz7Q/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Gareeb Ki Bebasi 💔 Bike Start Kyun Nahi Hui? 😭 Poor Man Emotional Struggle #shorts #viral #trending</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/kP0GhllGz7Q" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=kP0GhllGz7Q" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Gareeb ki Bike ka Dum 🏍️ Desi Bike Performance in Khet 🔥 Poor Man's Power #shorts #viral #trending","thumbnailUrl":"https://i.ytimg.com/vi/GFQYtjAqdgM/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Gareeb ki Bike ka Dum 🏍️ Desi Bike Performance in Khet 🔥 Poor Man's Power #shorts #viral #trending</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/GFQYtjAqdgM" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=GFQYtjAqdgM" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Gareeb Ki Viral Bike 🏍️ Road Par Dekh Kar Sab Hairan 😱 Wait For End! #shorts #viral #trending #gareeb","thumbnailUrl":"https://i.ytimg.com/vi/p9K-FBx5-38/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Gareeb Ki Viral Bike 🏍️ Road Par Dekh Kar Sab Hairan 😱 Wait For End! #shorts #viral #trending #gareeb</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/p9K-FBx5-38" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=p9K-FBx5-38" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Gareeb Ki Majboori 🥺 Aakhir Bike Kyun Nahi Chalayi? Heart Touching Story #shorts #viral #trending #bike","thumbnailUrl":"https://i.ytimg.com/vi/nd7MBSgD8L0/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Gareeb Ki Majboori 🥺 Aakhir Bike Kyun Nahi Chalayi? Heart Touching Story #shorts #viral #trending #bike</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/nd7MBSgD8L0" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=nd7MBSgD8L0" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Gareeb Ki Bike Ko Ye Kya Hua? 🏍️😭 Heart Touching Emotional Story | #shorts #viral #trending #emotional #gareeb","thumbnailUrl":"https://i.ytimg.com/vi/SQ_Op9X1o_U/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Gareeb Ki Bike Ko Ye Kya Hua? 🏍️😭 Heart Touching Emotional Story | #shorts #viral #trending #emotional #gareeb</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/SQ_Op9X1o_U" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=SQ_Op9X1o_U" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Gareeb Ki Bike 🏍️ Kyun Ruki? 🤔 Emotional Heart Touching Story 🥺 #shorts #viral #india #pakistan","thumbnailUrl":"https://i.ytimg.com/vi/fVnZQL_B6vA/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Gareeb Ki Bike 🏍️ Kyun Ruki? 🤔 Emotional Heart Touching Story 🥺 #shorts #viral #india #pakistan</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/fVnZQL_B6vA" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=fVnZQL_B6vA" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Hassan 🏍️ to bas hi nahi kar raha! 😱 Crazy Bike Stunt 🔥 #shorts #viral #trending #motovlog #hassan","thumbnailUrl":"https://i.ytimg.com/vi/ElYl1n4neyA/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Hassan 🏍️ to bas hi nahi kar raha! 😱 Crazy Bike Stunt 🔥 #shorts #viral #trending #motovlog #hassan</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/ElYl1n4neyA" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=ElYl1n4neyA" target="_blank">Watch Video</a>
-        </div>
-        <div class="card">
-            <script type="application/ld+json">
-            {"@context":"https://schema.org","@type":"VideoObject","name":"Bike Beech Raste Mein Kharab Ho Gayi! 😱 Sab Khatam? | Bike Breakdown Problem #shorts #viral #trending #motovlog","thumbnailUrl":"https://i.ytimg.com/vi/iqTI5qHErOo/hqdefault.jpg","uploadDate":"2026-06-22"}
-            </script>
-            <h3>Bike Beech Raste Mein Kharab Ho Gayi! 😱 Sab Khatam? | Bike Breakdown Problem #shorts #viral #trending #motovlog</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/iqTI5qHErOo" loading="lazy" frameborder="0"></iframe>
-            </div>
-            <a class="btn" href="https://www.youtube.com/watch?v=iqTI5qHErOo" target="_blank">Watch Video</a>
-        </div>
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(full_html)
+
+if __name__ == "__main__":
+    run_rolling_cycle()
         <div class="card">
             <script type="application/ld+json">
             {"@context":"https://schema.org","@type":"VideoObject","name":"Bike Ride Me Yeh Kya Ho Gaya? 😱 Wait For End 😂 #shorts #viral #bikelover #funny #trending","thumbnailUrl":"https://i.ytimg.com/vi/Q2NodNKlx_M/hqdefault.jpg","uploadDate":"2026-06-22"}
