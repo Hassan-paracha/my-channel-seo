@@ -1,7 +1,7 @@
 name: Global SEO Rolling Cycle
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs daily at midnight
+    - cron: "0 19 * * *" # Runs daily at midnight
   workflow_dispatch:
 
 jobs:
