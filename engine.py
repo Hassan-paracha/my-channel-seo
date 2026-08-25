@@ -6,9 +6,9 @@ import time
 from datetime import datetime
 
 # --- CONFIGURATION ---
-CHANNEL_HANDLE = "@HassanParacha-c3g" # Ensure this is your actual @handle
+CHANNEL_HANDLE = "@HassanParacha_c3g" # Ensure this is your actual @handle
 DB_FILE = "video_db.json"
-DAILY_INDEX_LIMIT = 180  # Updated from 180 to 18
+DAILY_INDEX_LIMIT = 380  # Updated from 380 to 180
 BATCH_SIZE = 5          
 COOLDOWN = 65           
 
