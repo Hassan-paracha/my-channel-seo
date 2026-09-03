@@ -36,3 +36,13 @@ jobs:
           git config --global user.email "bot@seo.com"
           git add video_db.json index.html
           git diff-index --quiet HEAD || (git commit -m "Daily Refresh: $(date)" && git push)
+
+      - name: Deploy to Public Hub (Using Workflow Token)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/Hassan-paracha/my-seo-hub.git target || exit 0
+          cp index.html target/
+          cd target
+          git add .
+          git diff-index --quiet HEAD || (git commit -m "SEO Hub Update: $(date)" && git push origin main) || echo "No changes or push skipped"
