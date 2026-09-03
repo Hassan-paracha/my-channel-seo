@@ -36,14 +36,3 @@ jobs:
           git config --global user.email "bot@seo.com"
           git add video_db.json index.html
           git diff-index --quiet HEAD || (git commit -m "Daily Refresh: $(date)" && git push)
-          
-      - name: Deploy to Public Hub
-        env:
-          PAT: ${{ secrets.PAT }}
-        run: |
-          # Cloning and updating your public repo
-          git clone https://x-access-token:${PAT}@github.com/Hassan-paracha/my-seo-hub.git target
-          cp index.html target/
-          cd target
-          git add .
-          git diff-index --quiet HEAD || (git commit -m "SEO Hub Update" && git push origin main)
