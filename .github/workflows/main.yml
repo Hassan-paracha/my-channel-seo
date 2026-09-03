@@ -8,6 +8,7 @@ on:
 jobs:
   seo-cycle:
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     permissions:
       contents: write # Crucial for saving the DB
     steps:
