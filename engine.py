@@ -10,7 +10,7 @@ CHANNEL_HANDLE = "@HassanParacha-c3g" # Ensure this is your actual @handle
 DB_FILE = "video_db.json"
 DAILY_INDEX_LIMIT = 180  # Updated from 380 to 180
 BATCH_SIZE = 5          
-COOLDOWN = 30           
+COOLDOWN = 65           
 
 def load_db():
     if os.path.exists(DB_FILE):
