@@ -1,7 +1,7 @@
 name: Global SEO Rolling Cycle
 on:
   schedule:
-    - cron: '0 19 * * *'
+    - cron: '0 19 * * *'   # Midnight PKT (UTC+5)
   workflow_dispatch:
 
 jobs:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     permissions:
-      contents: write # Crucial for saving the DB
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,11 +36,11 @@ jobs:
           git add video_db.json index.html
           git diff-index --quiet HEAD || (git commit -m "Daily Refresh: $(date)" && git push)
 
-      - name: Deploy to Public Hub (Using Workflow Token)
+      - name: Deploy to Public Hub
         env:
-          PAT: ${{ secrets.PAT }}    # ✅ same name all the way through
+          PAT: ${{ secrets.PAT }}
         run: |
-          git clone https://x-access-token:${PAT}@github.com/Hassan-paracha/my-seo-hub.git target || exit 0
+          git clone https://x-access-token:${PAT}@github.com/Hassan-paracha/my-seo-hub.git target
           cp index.html target/
           cd target
           git config user.name "SEO-Cycle-Bot"
