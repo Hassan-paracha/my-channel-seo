@@ -8,7 +8,7 @@ from datetime import datetime
 # --- CONFIGURATION ---
 CHANNEL_HANDLE = "@HassanParacha-c3g"   # Your actual @handle
 DB_FILE = "video_db.json"
-DAILY_INDEX_LIMIT = 5                  # Videos AI-polished per day
+DAILY_INDEX_LIMIT = 100                  # Videos AI-polished per day
 BATCH_SIZE = 5                           # Gemini calls per batch
 COOLDOWN = 65                            # Seconds between batches (looks natural)
 
