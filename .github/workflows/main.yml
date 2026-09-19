@@ -1,4 +1,5 @@
 name: Global SEO Rolling Cycle
+
 on:
   schedule:
     - cron: '0 19 * * *'   # Midnight PKT (UTC+5)
@@ -7,9 +8,10 @@ on:
 jobs:
   seo-cycle:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 55        # Increased: 100 videos = ~20 batches x 65s cooldown = ~22min + API time
     permissions:
       contents: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,7 +21,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Dependencies
+      - name: Install Dependencies
         run: |
           pip uninstall -y google google-generativeai
           pip install -U google-genai yt-dlp
@@ -29,14 +31,14 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python engine.py
 
-      - name: Commit & Push Changes
+      - name: Commit & Push to Source Repo
         run: |
           git config --global user.name "SEO-Cycle-Bot"
           git config --global user.email "bot@seo.com"
           git add video_db.json index.html
           git diff-index --quiet HEAD || (git commit -m "Daily Refresh: $(date)" && git push)
 
-      - name: Deploy to Public Hub
+      - name: Deploy to Public Hub (my-seo-hub)
         env:
           PAT: ${{ secrets.PAT }}
         run: |
@@ -45,5 +47,5 @@ jobs:
           cd target
           git config user.name "SEO-Cycle-Bot"
           git config user.email "bot@seo.com"
-          git add .
+          git add index.html
           git diff-index --quiet HEAD || (git commit -m "SEO Hub Update: $(date)" && git push origin main) || echo "No changes or push skipped"
