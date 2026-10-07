@@ -6,7 +6,7 @@ import time
 from datetime import datetime
 
 # --- CONFIGURATION ---
-CHANNEL_HANDLE = "@HassanParacha-c3g"   # Your actual @handle
+CHANNEL_HANDLE = "@hassanparachaoffical"   # Your actual @handle
 DB_FILE = "video_db.json"
 DAILY_INDEX_LIMIT = 150                  # Videos AI-polished per day
 BATCH_SIZE = 5                           # Gemini calls per batch
