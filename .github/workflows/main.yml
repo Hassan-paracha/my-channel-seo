@@ -4,6 +4,22 @@ on:
   schedule:
     - cron: '0 19 * * *'   # Midnight PKT (UTC+5)
   workflow_dispatch:
+    inputs:
+      sync_slice_size:
+        description: Maximum video details to refresh
+        required: false
+        type: string
+        default: '50'
+      refresh_per_day:
+        description: Maximum SEO refreshes per run
+        required: false
+        type: string
+        default: '35'
+      dry_run:
+        description: Skip YouTube, autocomplete, Gemini, and database writes
+        required: false
+        type: string
+        default: '0'
 
 concurrency:
   group: seo-cycle
@@ -12,7 +28,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 50
     permissions:
       contents: write
       pages: read
@@ -37,7 +53,9 @@ jobs:
       - name: Run rolling engine
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          SYNC_SLICE_SIZE: ${{ inputs.sync_slice_size || '50' }}
+          REFRESH_PER_DAY: ${{ inputs.refresh_per_day || '35' }}
+          DRY_RUN: ${{ inputs.dry_run || '0' }}
           SITE_BASE_URL: https://hassan-paracha.github.io/my-channel-seo/
         run: python engine.py
 
