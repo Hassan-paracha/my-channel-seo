@@ -1,20 +1,29 @@
+import html
+import json
 import os
+import re
 import tempfile
-from urllib.parse import urlencode
-from urllib.error import HTTPError
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.error import HTTPError, URLError
+from urllib.parse import quote, urlencode
 from urllib.request import urlopen
+from xml.sax.saxutils import escape as xml_escape
+
 import yt_dlp
 from google import genai
-import json
-import time
-from datetime import datetime
 
-# --- CONFIGURATION ---
-CHANNEL_HANDLE = "@hassanparachaoffical"   # Your actual @handle
+CHANNEL_HANDLE = "@hassanparachaoffical"
 DB_FILE = "video_db.json"
-DAILY_INDEX_LIMIT = 150                  # Videos AI-polished per day
-BATCH_SIZE = 5                           # Gemini calls per batch
-COOLDOWN = 65                            # Seconds between batches (looks natural)
+SITE_DIR = Path("site")
+DEFAULT_SITE_BASE_URL = "https://hassan-paracha.github.io/my-channel-seo/"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+BATCH_SIZE = 40
+PAGE_SIZE = 24
+MAX_DAILY_GEMINI_REQUESTS = 250
+GEMINI_REQUEST_INTERVAL = 6.1
+GOOGLE_VERIFICATION_TAG = '<meta name="google-site-verification" content="QyDSUhm4hfRGneKuDBC1rA-p19E7Y2lI_Eh9krE5nVY" />'
 
 def load_db():
     if not os.path.exists(DB_FILE):
@@ -49,7 +58,9 @@ def _youtube_api_get(resource, params):
     except HTTPError as error:
         payload = json.loads(error.read().decode("utf-8"))
         message = payload.get("error", {}).get("message", "unknown error")
-        raise RuntimeError(f"YouTube Data API request failed: {message}") from error
+        raise RuntimeError(f"YouTube Data API request failed: {message}") from None
+    except (URLError, TimeoutError) as error:
+        raise RuntimeError(f"YouTube Data API network request failed: {error.reason if isinstance(error, URLError) else 'timeout'}") from None
     if "error" in payload:
         raise RuntimeError(f"YouTube Data API request failed: {payload['error'].get('message', 'unknown error')}")
     return payload
@@ -135,115 +146,464 @@ def get_channel_videos():
         return _get_videos_from_api()
     return _get_videos_with_ytdlp()
 
-def ai_polish(title):
-    client = genai.Client()
-    prompt = (
-        f"Optimize this title for Pakistani and Indian trending YouTube SEO. "
-        f"Use Hinglish + English keywords. Return ONLY the title, nothing else: {title}"
-    )
+class GeminiRateLimiter:
+    def __init__(self):
+        self.last_request = None
+        self.request_count = 0
+
+    def wait(self):
+        if self.request_count >= MAX_DAILY_GEMINI_REQUESTS:
+            raise RuntimeError("Gemini daily request limit reached")
+        if self.last_request is not None:
+            delay = GEMINI_REQUEST_INTERVAL - (time.monotonic() - self.last_request)
+            if delay > 0:
+                time.sleep(delay)
+        self.last_request = time.monotonic()
+        self.request_count += 1
+
+
+def parse_polished_response(response_text, expected_ids):
+    """Parse a structured Gemini response and require an exact ID match."""
     try:
-        response = client.models.generate_content(
-            model="gemini-2.0-flash", contents=prompt
+        results = json.loads(response_text)
+    except (TypeError, json.JSONDecodeError) as error:
+        raise ValueError("Gemini returned invalid JSON") from error
+    if not isinstance(results, list) or len(results) != len(expected_ids):
+        raise ValueError("Gemini response count does not match the requested batch")
+    by_id = {}
+    for result in results:
+        if not isinstance(result, dict):
+            raise ValueError("Gemini response entries must be JSON objects")
+        video_id, title = result.get("id"), result.get("title")
+        if not isinstance(video_id, str) or not isinstance(title, str) or not title.strip():
+            raise ValueError("Gemini response entries need a video id and title")
+        if video_id in by_id:
+            raise ValueError(f"Gemini returned duplicate video id: {video_id}")
+        if len(title.strip()) > 70 or '"' in title or "'" in title:
+            raise ValueError(f"Gemini returned an invalid title for video {video_id}")
+        if len(re.findall(r"#\w+", title)) > 2:
+            raise ValueError(f"Gemini returned too many hashtags for video {video_id}")
+        by_id[video_id] = title.strip()
+    if set(by_id) != set(expected_ids):
+        raise ValueError("Gemini response IDs do not match the requested batch")
+    return [{"id": video_id, "title": by_id[video_id]} for video_id in expected_ids]
+
+
+def _retryable_gemini_error(error):
+    status = getattr(error, "status_code", None) or getattr(error, "code", None)
+    response = getattr(error, "response", None)
+    status = status or getattr(response, "status_code", None)
+    if isinstance(status, str) and status.isdigit():
+        status = int(status)
+    if status in (429, 500, 502, 503, 504):
+        return True
+    return "429" in type(error).__name__ or "5xx" in type(error).__name__.lower()
+
+
+def polish_batch(client, batch, limiter):
+    expected_ids = [video_id for video_id, _ in batch]
+    items = [{"id": video_id, "title": video["original_title"]} for video_id, video in batch]
+    prompt = (
+        "Polish these YouTube titles for a Pakistani and Indian audience. Keep each title's "
+        "meaning, keep Hinglish where present, stay under 70 characters, add one clear "
+        "searchable keyword phrase, use at most 2 hashtags, and use no quotation marks. "
+        "Never invent facts. Return exactly one object per input with the same id and its "
+        "polished title. Input JSON:\n"
+        f"{json.dumps(items, ensure_ascii=False)}"
+    )
+    schema = {
+        "type": "ARRAY",
+        "items": {
+            "type": "OBJECT",
+            "properties": {
+                "id": {"type": "STRING"},
+                "title": {"type": "STRING"},
+            },
+            "required": ["id", "title"],
+        },
+    }
+    for attempt in range(4):
+        limiter.wait()
+        try:
+            response = client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=prompt,
+                config={
+                    "response_mime_type": "application/json",
+                    "response_schema": schema,
+                },
+            )
+            if not response.text:
+                raise ValueError("Gemini returned an empty response")
+            return parse_polished_response(response.text, expected_ids)
+        except Exception as error:
+            if attempt == 3 or not _retryable_gemini_error(error):
+                raise
+            delay = 2 ** (attempt + 1)
+            print(f"Gemini request failed ({error}); retrying in {delay}s")
+            time.sleep(delay)
+
+
+def _normalise_published_at(value):
+    if not value:
+        return None
+    if re.fullmatch(r"\d{8}", str(value)):
+        value = f"{value[:4]}-{value[4:6]}-{value[6:8]}T00:00:00Z"
+    try:
+        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+def _sync_database(db, channel_videos):
+    active_ids = set()
+    for source in channel_videos:
+        video_id = source.get("id")
+        if not video_id:
+            continue
+        active_ids.add(video_id)
+        source_title = source.get("title") or "YouTube Video"
+        video = db.get(video_id)
+        if video is None:
+            video = {
+                "original_title": source_title,
+                "title": source_title,
+                "polished": False,
+                "polished_at": None,
+                "published_at": None,
+                "description": "",
+                "duration": None,
+                "url": f"https://www.youtube.com/watch?v={video_id}",
+            }
+            db[video_id] = video
+        elif video.get("original_title", video.get("title")) != source_title:
+            video["original_title"] = source_title
+            video["title"] = source_title
+            video["polished"] = False
+            video["polished_at"] = None
+            video["last_refreshed"] = None
+        video.setdefault("original_title", source_title)
+        video.setdefault("title", source_title)
+        video.setdefault("polished", False)
+        video.setdefault("polished_at", None)
+        video["description"] = source.get("description", video.get("description", "")) or ""
+        video["published_at"] = _normalise_published_at(
+            source.get("published_at") or video.get("published_at")
         )
-        return response.text.strip().replace('"', '')
-    except:
-        return title
+        if source.get("duration") is not None:
+            video["duration"] = source["duration"]
+        video["url"] = f"https://www.youtube.com/watch?v={video_id}"
+        video["removed"] = False
+    for video_id, video in db.items():
+        if video_id not in active_ids:
+            video["removed"] = True
 
-def build_html(videos_to_display):
-    """Generates the full HTML page from a list of (vid, data) tuples."""
 
-    cards_html = "".join([f"""
-        <div class="card">
-            <script type="application/ld+json">
-            {{"@context":"https://schema.org","@type":"VideoObject","name":"{v['title'].replace('"', '')}","thumbnailUrl":"https://i.ytimg.com/vi/{vid}/hqdefault.jpg","uploadDate":"{v['last_refreshed']}"}}
-            </script>
-            <h3>{v['title']}</h3>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/{vid}" loading="lazy" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <a class="btn" href="{v['url']}" target="_blank">Watch Video</a>
-        </div>""" for vid, v in videos_to_display])
+def _polish_unpolished_videos(db):
+    candidates = [
+        (video_id, video)
+        for video_id, video in db.items()
+        if not video.get("removed") and not video.get("polished")
+    ]
+    if not candidates:
+        return 0
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError("GEMINI_API_KEY is required to polish unpolished videos")
+    client = genai.Client(api_key=api_key)
+    limiter = GeminiRateLimiter()
+    failed_batches = 0
+    failed_videos = 0
+    total_batches = (len(candidates) + BATCH_SIZE - 1) // BATCH_SIZE
+    for offset in range(0, len(candidates), BATCH_SIZE):
+        batch = candidates[offset:offset + BATCH_SIZE]
+        try:
+            polished_titles = polish_batch(client, batch, limiter)
+        except Exception as error:
+            failed_batches += 1
+            failed_videos += len(batch)
+            print(
+                f"Gemini batch {offset // BATCH_SIZE + 1}/{total_batches} failed: "
+                f"{type(error).__name__}: {error}"
+            )
+            continue
+        polished_by_id = {item["id"]: item["title"] for item in polished_titles}
+        now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        for video_id, video in batch:
+            video["title"] = polished_by_id[video_id]
+            video["polished"] = True
+            video["polished_at"] = now
+            video["last_refreshed"] = now[:10]
+        save_db(db)
+    if failed_batches / total_batches > 0.5:
+        raise RuntimeError(
+            f"{failed_batches} of {total_batches} Gemini batches failed; "
+            "more than half failed"
+        )
+    return len(candidates) - failed_videos
 
-    return f"""<!DOCTYPE html>
+
+def _duration_iso8601(duration):
+    if duration is None:
+        return None
+    if isinstance(duration, str) and duration.startswith("P"):
+        return duration
+    seconds = int(float(duration))
+    hours, remainder = divmod(seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    parts = []
+    if hours:
+        parts.append(f"{hours}H")
+    if minutes:
+        parts.append(f"{minutes}M")
+    if seconds or not parts:
+        parts.append(f"{seconds}S")
+    return "PT" + "".join(parts)
+
+
+def _json_ld(value):
+    return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c")
+
+
+def _video_card(video_id, video):
+    title = html.escape(str(video.get("title") or "YouTube Video"), quote=True)
+    description = html.escape(str(video.get("description") or "")[:240], quote=True)
+    video_url = f"https://www.youtube.com/watch?v={quote(video_id, safe='')}"
+    thumbnail = f"https://i.ytimg.com/vi/{quote(video_id, safe='')}/hqdefault.jpg"
+    embed_url = f"https://www.youtube.com/embed/{quote(video_id, safe='')}"
+    video_object = {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": str(video.get("title") or "YouTube Video"),
+        "description": str(video.get("description") or ""),
+        "thumbnailUrl": thumbnail,
+        "embedUrl": embed_url,
+    }
+    published_at = _normalise_published_at(video.get("published_at"))
+    duration = _duration_iso8601(video.get("duration"))
+    if published_at:
+        video_object["uploadDate"] = published_at
+    if duration:
+        video_object["duration"] = duration
+    return f"""
+        <article class="card">
+            <script type="application/ld+json">{_json_ld(video_object)}</script>
+            <button class="video-facade" type="button" data-video-id="{html.escape(video_id, quote=True)}" aria-label="Play {title}">
+                <img src="{html.escape(thumbnail, quote=True)}" alt="{title}" loading="lazy">
+                <span aria-hidden="true">▶</span>
+            </button>
+            <h2>{title}</h2>
+            <p class="description">{description}</p>
+            <a class="btn" href="{html.escape(video_url, quote=True)}" target="_blank" rel="noopener noreferrer">Watch Video</a>
+        </article>"""
+
+
+def build_html(videos_to_display, *, page_number=1, total_pages=1, page_path="", intro=None, page_title=None):
+    base_url = os.getenv("SITE_BASE_URL", DEFAULT_SITE_BASE_URL).rstrip("/") + "/"
+    canonical_url = base_url + page_path.lstrip("/")
+    heading = page_title or "Hassan Paracha Videos"
+    meta_description = intro or "Watch Hassan Paracha's YouTube videos, shorts, family moments, and motorcycle stories."
+    cards_html = "".join(_video_card(video_id, video) for video_id, video in videos_to_display)
+    if not cards_html:
+        cards_html = '<p class="empty">No videos yet — check back soon.</p>'
+    pagination = ""
+    if total_pages > 1:
+        previous_page_path = "../../" if page_number == 2 else f"../{page_number - 1}/"
+        previous_page = (
+            f'<a href="{previous_page_path}" rel="prev">Previous</a>'
+            if page_number > 1 else ""
+        )
+        next_page_path = f"page/{page_number + 1}/" if page_number == 1 else f"../{page_number + 1}/"
+        next_page = (
+            f'<a href="{next_page_path}" rel="next">Next</a>'
+            if page_number < total_pages else ""
+        )
+        pagination = f'<nav class="pagination" aria-label="Video pages">{previous_page}<span>Page {page_number} of {total_pages}</span>{next_page}</nav>'
+    safe_title = html.escape(f"{heading} | Hassan Paracha", quote=True)
+    safe_description = html.escape(meta_description, quote=True)
+    safe_canonical = html.escape(canonical_url, quote=True)
+    first_thumbnail = ""
+    if videos_to_display:
+        first_thumbnail = f"https://i.ytimg.com/vi/{quote(videos_to_display[0][0], safe='')}/hqdefault.jpg"
+    og_image = f'<meta property="og:image" content="{html.escape(first_thumbnail, quote=True)}">' if first_thumbnail else ""
+    return f"""<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="QyDSUhm4hfRGneKuDBC1rA-p19E7Y2lI_Eh9krE5nVY" />
-    <title>Hassan SEO Hub | Viral Shorts & Vlogs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {GOOGLE_VERIFICATION_TAG}
+    <title>{safe_title}</title>
+    <meta name="description" content="{safe_description}">
+    <link rel="canonical" href="{safe_canonical}">
+    <meta property="og:title" content="{safe_title}">
+    <meta property="og:description" content="{safe_description}">
+    <meta property="og:url" content="{safe_canonical}">
+    <meta property="og:type" content="website">
+    {og_image}
     <style>
-        body {{ font-family: sans-serif; background: #f0f2f5; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; padding: 25px; margin: 0; }}
-        .card {{ background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }}
-        .video-container {{ position: relative; padding-bottom: 56.25%; height: 0; }}
-        .video-container iframe {{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px; border: none; }}
-        .btn {{ display: block; text-align: center; background: #ff0000; color: #fff; text-decoration: none; padding: 12px; margin-top: 10px; border-radius: 8px; font-weight: bold; }}
-        h3 {{ font-size: 15px; height: 40px; overflow: hidden; color: #333; margin: 0 0 10px 0; }}
+        body {{ font-family: system-ui, sans-serif; background: #f0f2f5; margin: 0; color: #222; }}
+        main {{ max-width: 1280px; margin: auto; padding: 24px; }}
+        .videos {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }}
+        .card {{ background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,.05); }}
+        .video-facade {{ width: 100%; aspect-ratio: 16 / 9; position: relative; border: 0; padding: 0; cursor: pointer; background: #111; }}
+        .video-facade img, .video-facade iframe {{ width: 100%; height: 100%; object-fit: cover; border: 0; border-radius: 10px; }}
+        .video-facade span {{ position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 48px; text-shadow: 0 1px 8px #000; }}
+        h1 {{ margin-top: 0; }} h2 {{ font-size: 17px; }}
+        .description {{ color: #555; font-size: 14px; }}
+        .btn {{ display: block; text-align: center; background: #c00; color: #fff; text-decoration: none; padding: 12px; margin-top: 10px; border-radius: 8px; font-weight: bold; }}
+        .pagination {{ display: flex; justify-content: space-between; padding: 24px 0; }}
+        .empty {{ padding: 60px; text-align: center; color: #666; }}
     </style>
 </head>
 <body>
-    {cards_html if cards_html else '<p style="grid-column:1/-1;text-align:center;color:#999;padding:60px;">No videos yet — check back after the first engine run.</p>'}
+    <main>
+        <h1>{html.escape(heading, quote=True)}</h1>
+        <p>{html.escape(meta_description, quote=True)}</p>
+        <section class="videos" aria-label="Videos">{cards_html}</section>
+        {pagination}
+    </main>
+    <script>
+        document.querySelectorAll(".video-facade").forEach(function (button) {{
+            button.addEventListener("click", function () {{
+                var frame = document.createElement("iframe");
+                frame.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(button.dataset.videoId) + "?autoplay=1";
+                frame.title = button.getAttribute("aria-label");
+                frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+                frame.allowFullscreen = true;
+                button.replaceChildren(frame);
+            }});
+        }});
+    </script>
 </body>
 </html>"""
 
+
+TOPIC_CLUSTERS = (
+    ("bike-start", "Motorcycle & Bike Stories", "Motorcycle and bike stories, repairs, and moments when a bike will not start.", re.compile(r"\b(bike|motorcycle|start|chabi|key)\b", re.I)),
+    ("family-funny", "Family & Funny Moments", "Funny family, kids, and everyday moments from Hassan's videos.", re.compile(r"\b(family|fun|funny|bach|bache|kids|park|enjoy)\b", re.I)),
+    ("celebrations", "Celebrations", "Celebrations, special occasions, and happy moments.", re.compile(r"\b(birthday|eid|wedding|celebration|anniversary|party)\b", re.I)),
+)
+
+
+def _topic_for_title(title):
+    for slug, label, intro, pattern in TOPIC_CLUSTERS:
+        if pattern.search(title):
+            return slug, label, intro
+    return None
+
+
+def generate_site(db):
+    videos = [
+        (video_id, video)
+        for video_id, video in db.items()
+        if not video.get("removed")
+    ]
+    videos.sort(
+        key=lambda item: (
+            bool(_normalise_published_at(item[1].get("published_at"))),
+            _normalise_published_at(item[1].get("published_at")) or "",
+        ),
+        reverse=True,
+    )
+    SITE_DIR.mkdir(parents=True, exist_ok=True)
+    page_count = max(1, (len(videos) + PAGE_SIZE - 1) // PAGE_SIZE)
+    pages = []
+    for page_index in range(page_count):
+        page_number = page_index + 1
+        page_path = "" if page_number == 1 else f"page/{page_number}/"
+        output = SITE_DIR / "index.html" if page_number == 1 else SITE_DIR / page_path / "index.html"
+        output.parent.mkdir(parents=True, exist_ok=True)
+        page_videos = videos[page_index * PAGE_SIZE:(page_index + 1) * PAGE_SIZE]
+        heading = "Hassan Paracha Videos" if page_number == 1 else f"Hassan Paracha Videos - Page {page_number}"
+        output.write_text(
+            build_html(
+                page_videos,
+                page_number=page_number,
+                total_pages=page_count,
+                page_path=page_path,
+                page_title=heading,
+            ),
+            encoding="utf-8",
+        )
+        pages.append(page_path)
+
+    topics = {}
+    for video_id, video in videos:
+        topic = _topic_for_title(video.get("title") or "")
+        if topic:
+            topics.setdefault(topic[0], []).append((video_id, video))
+    for slug, label, intro, _pattern in TOPIC_CLUSTERS:
+        topic_videos = topics.get(slug, [])
+        if not topic_videos:
+            stale_topic_page = SITE_DIR / "topics" / slug / "index.html"
+            if stale_topic_page.exists():
+                stale_topic_page.unlink()
+            continue
+        page_path = f"topics/{slug}/"
+        output = SITE_DIR / page_path / "index.html"
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(
+            build_html(
+                topic_videos,
+                page_path=page_path,
+                intro=intro,
+                page_title=label,
+            ),
+            encoding="utf-8",
+        )
+        pages.append(page_path)
+
+    page_directory = SITE_DIR / "page"
+    if page_directory.exists():
+        for stale_page in page_directory.glob("*/index.html"):
+            if stale_page.parent.name.isdigit() and int(stale_page.parent.name) > page_count:
+                stale_page.unlink()
+
+    base_url = os.getenv("SITE_BASE_URL", DEFAULT_SITE_BASE_URL).rstrip("/") + "/"
+    locations = "".join(
+        f"<url><loc>{xml_escape(base_url + path)}</loc></url>"
+        for path in pages
+    )
+    (SITE_DIR / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+        f"{locations}</urlset>\n",
+        encoding="utf-8",
+    )
+    (SITE_DIR / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\nSitemap: {base_url}sitemap.xml\n",
+        encoding="utf-8",
+    )
+    return len(videos), len(pages)
+
+
 def run_rolling_cycle():
     db = load_db()
-    all_videos = get_channel_videos()
-    today_str = datetime.now().strftime("%Y-%m-%d")
-
-    # --- Step 1: Register any new videos in the DB (unpolished) ---
-    new_count = 0
-    for v in all_videos:
-        v_id = v.get('id')
-        if v_id and v_id not in db:
-            db[v_id] = {
-                "title": v.get('title', 'YouTube Video'),
-                "last_refreshed": "2000-01-01",   # Marks as unpolished
-                "url": f"https://www.youtube.com/watch?v={v_id}"
-            }
-            new_count += 1
-
-    print(f"Total in library: {len(db)} | New found today: {new_count}")
-
-    # --- Step 2: Pick the OLDEST videos first for AI polishing (rolling cycle) ---
-    sorted_ids = sorted(db.keys(), key=lambda x: db[x].get('last_refreshed', "2000-01-01"))
-    to_process = sorted_ids[:DAILY_INDEX_LIMIT]
-
-    print(f"Polishing {len(to_process)} videos today...")
-
-    # --- Step 3: AI polish in batches with cooldown ---
-    for i in range(0, len(to_process), BATCH_SIZE):
-        batch = to_process[i:i + BATCH_SIZE]
-        for v_id in batch:
-            original = db[v_id]['title']
-            db[v_id]['title'] = ai_polish(original)
-            db[v_id]['last_refreshed'] = today_str
-            print(f"  Polished: {db[v_id]['title'][:60]}...")
+    dry_run = os.getenv("DRY_RUN") == "1"
+    if not dry_run:
+        channel_videos = get_channel_videos()
+        for video in db.values():
+            if not isinstance(video, dict):
+                raise ValueError("Each video database entry must be a JSON object")
+            if "original_title" not in video:
+                video["last_refreshed"] = None
+            video.setdefault("original_title", video.get("title", "YouTube Video"))
+            video.setdefault("title", video["original_title"])
+            video.setdefault("polished", False)
+            video.setdefault("polished_at", None)
+        _sync_database(db, channel_videos)
         save_db(db)
-        if i + BATCH_SIZE < len(to_process):
-            print(f"  Batch {i // BATCH_SIZE + 1} done. Cooling down {COOLDOWN}s...")
-            time.sleep(COOLDOWN)
+        polished_count = _polish_unpolished_videos(db)
+        save_db(db)
+        print(f"Newly polished videos: {polished_count}")
+    else:
+        print("DRY_RUN=1: skipping YouTube sync, Gemini calls, and database writes")
+    video_count, page_count = generate_site(db)
+    print(f"Built site/ with {video_count} videos across {page_count} pages.")
 
-    # --- Step 4: Build display list — ONLY polished videos, sorted newest first ---
-    # This is the key fix: unpolished videos (2000-01-01) are NEVER shown on the page.
-    # The page grows organically day by day as more videos get polished.
-    polished = [
-        (vid, v) for vid, v in db.items()
-        if v.get('last_refreshed', '2000-01-01') != '2000-01-01'
-    ]
-    sorted_for_display = sorted(
-        polished,
-        key=lambda x: x[1]['last_refreshed'],
-        reverse=True
-    )
-
-    print(f"Displaying {len(sorted_for_display)} polished videos on page.")
-
-    # --- Step 5: Write index.html ---
-    html = build_html(sorted_for_display)
-    with open("index.html", "w", encoding="utf-8") as f:
-        f.write(html)
-
-    print("Done! index.html written successfully.")
 
 if __name__ == "__main__":
     run_rolling_cycle()
