@@ -179,11 +179,14 @@ def parse_polished_response(response_text, expected_ids):
             raise ValueError("Gemini response entries need a video id and title")
         if video_id in by_id:
             raise ValueError(f"Gemini returned duplicate video id: {video_id}")
-        if len(title.strip()) > 70 or '"' in title or "'" in title:
+        stripped_title = title.strip()
+        has_quote = any(mark in stripped_title for mark in ('"', "“", "”"))
+        has_wrapping_single_quote = stripped_title.startswith(("'", "‘")) or stripped_title.endswith(("'", "’"))
+        if len(stripped_title) > 70 or has_quote or has_wrapping_single_quote:
             raise ValueError(f"Gemini returned an invalid title for video {video_id}")
-        if len(re.findall(r"#\w+", title)) > 2:
+        if len(re.findall(r"#\w+", stripped_title)) > 2:
             raise ValueError(f"Gemini returned too many hashtags for video {video_id}")
-        by_id[video_id] = title.strip()
+        by_id[video_id] = stripped_title
     if set(by_id) != set(expected_ids):
         raise ValueError("Gemini response IDs do not match the requested batch")
     return [{"id": video_id, "title": by_id[video_id]} for video_id in expected_ids]

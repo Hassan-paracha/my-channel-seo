@@ -30,6 +30,9 @@ def test_polished_batch_requires_matching_ids_and_valid_titles():
     )
     assert [item["id"] for item in result] == ["a", "b"]
     assert result[0]["title"] == "Bike start problem fix"
+    assert engine.parse_polished_response(
+        '[{"id":"a","title":"Don\'t start bike"}]', ["a"]
+    )[0]["title"] == "Don't start bike"
 
     with pytest.raises(ValueError, match="IDs"):
         engine.parse_polished_response('[{"id":"a","title":"Safe title"}]', ["b"])
