@@ -1,4 +1,5 @@
 import os
+import tempfile
 import yt_dlp
 from google import genai
 import json
@@ -13,17 +14,29 @@ BATCH_SIZE = 5                           # Gemini calls per batch
 COOLDOWN = 65                            # Seconds between batches (looks natural)
 
 def load_db():
-    if os.path.exists(DB_FILE):
-        try:
-            with open(DB_FILE, "r") as f:
-                return json.load(f)
-        except:
-            return {}
-    return {}
+    if not os.path.exists(DB_FILE):
+        return {}
+    with open(DB_FILE, "r", encoding="utf-8") as f:
+        db = json.load(f)
+    if not isinstance(db, dict):
+        raise ValueError(f"{DB_FILE} must contain a JSON object")
+    return db
 
 def save_db(db):
-    with open(DB_FILE, "w", encoding="utf-8") as f:
-        json.dump(db, f, indent=4)
+    directory = os.path.dirname(os.path.abspath(DB_FILE))
+    temp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=directory, delete=False
+        ) as f:
+            temp_path = f.name
+            json.dump(db, f, indent=4, ensure_ascii=False)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(temp_path, DB_FILE)
+    finally:
+        if temp_path and os.path.exists(temp_path):
+            os.unlink(temp_path)
 
 def get_channel_videos():
     """POWER SCRAPE: Uses the Uploads Playlist to find 100% of content."""
