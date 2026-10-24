@@ -1,5 +1,8 @@
 import os
 import tempfile
+from urllib.parse import urlencode
+from urllib.error import HTTPError
+from urllib.request import urlopen
 import yt_dlp
 from google import genai
 import json
@@ -38,25 +41,99 @@ def save_db(db):
         if temp_path and os.path.exists(temp_path):
             os.unlink(temp_path)
 
-def get_channel_videos():
-    """POWER SCRAPE: Uses the Uploads Playlist to find 100% of content."""
-    base_url = f"https://www.youtube.com/{CHANNEL_HANDLE}/videos"
-    ydl_opts = {'quiet': True, 'extract_flat': True}
+def _youtube_api_get(resource, params):
+    query = urlencode({**params, "key": os.environ["YOUTUBE_API_KEY"]})
+    try:
+        with urlopen(f"https://www.googleapis.com/youtube/v3/{resource}?{query}", timeout=30) as response:
+            payload = json.load(response)
+    except HTTPError as error:
+        payload = json.loads(error.read().decode("utf-8"))
+        message = payload.get("error", {}).get("message", "unknown error")
+        raise RuntimeError(f"YouTube Data API request failed: {message}") from error
+    if "error" in payload:
+        raise RuntimeError(f"YouTube Data API request failed: {payload['error'].get('message', 'unknown error')}")
+    return payload
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        try:
-            channel_info = ydl.extract_info(base_url, download=False)
-            channel_id = channel_info.get('id')
-            if channel_id and channel_id.startswith('UC'):
-                uploads_id = 'UU' + channel_id[2:]
-                uploads_url = f"https://www.youtube.com/playlist?list={uploads_id}"
-                print(f"Accessing Master List: {uploads_url}")
-                full_result = ydl.extract_info(uploads_url, download=False)
-                return full_result.get('entries', [])
-            return channel_info.get('entries', [])
-        except Exception as e:
-            print(f"Scrape Error: {e}")
-            return []
+
+def _get_videos_from_api():
+    channel = _youtube_api_get("channels", {
+        "part": "contentDetails",
+        "forHandle": CHANNEL_HANDLE,
+    })
+    items = channel.get("items", [])
+    if not items:
+        raise RuntimeError(f"YouTube channel not found for {CHANNEL_HANDLE}")
+    uploads_id = items[0]["contentDetails"]["relatedPlaylists"]["uploads"]
+
+    playlist_items = []
+    page_token = None
+    while True:
+        params = {"part": "snippet,contentDetails", "playlistId": uploads_id, "maxResults": 50}
+        if page_token:
+            params["pageToken"] = page_token
+        page = _youtube_api_get("playlistItems", params)
+        playlist_items.extend(page.get("items", []))
+        page_token = page.get("nextPageToken")
+        if not page_token:
+            break
+
+    videos = []
+    video_ids = [
+        item.get("contentDetails", {}).get("videoId")
+        for item in playlist_items
+    ]
+    for offset in range(0, len(video_ids), 50):
+        ids = [video_id for video_id in video_ids[offset:offset + 50] if video_id]
+        if not ids:
+            continue
+        payload = _youtube_api_get("videos", {
+            "part": "snippet,contentDetails",
+            "id": ",".join(ids),
+            "maxResults": 50,
+        })
+        for item in payload.get("items", []):
+            snippet = item.get("snippet", {})
+            videos.append({
+                "id": item["id"],
+                "title": snippet.get("title", "YouTube Video"),
+                "description": snippet.get("description", ""),
+                "published_at": snippet.get("publishedAt"),
+                "duration": item.get("contentDetails", {}).get("duration"),
+            })
+    return videos
+
+
+def _get_videos_with_ytdlp():
+    base_url = f"https://www.youtube.com/{CHANNEL_HANDLE}/videos"
+    with yt_dlp.YoutubeDL({"quiet": True, "extract_flat": True}) as ydl:
+        channel_info = ydl.extract_info(base_url, download=False)
+        channel_id = channel_info.get("id")
+        if channel_id and channel_id.startswith("UC"):
+            uploads_id = "UU" + channel_id[2:]
+            playlist_url = f"https://www.youtube.com/playlist?list={uploads_id}"
+            entries = ydl.extract_info(playlist_url, download=False).get("entries", [])
+        else:
+            entries = channel_info.get("entries", [])
+    videos = []
+    for entry in entries:
+        if not entry or not entry.get("id"):
+            continue
+        upload_date = entry.get("upload_date")
+        videos.append({
+            "id": entry["id"],
+            "title": entry.get("title") or "YouTube Video",
+            "description": entry.get("description") or "",
+            "published_at": f"{upload_date[:4]}-{upload_date[4:6]}-{upload_date[6:8]}T00:00:00Z" if upload_date else None,
+            "duration": entry.get("duration"),
+        })
+    return videos
+
+
+def get_channel_videos():
+    """Read the complete uploads playlist from the API, falling back to yt-dlp."""
+    if os.getenv("YOUTUBE_API_KEY"):
+        return _get_videos_from_api()
+    return _get_videos_with_ytdlp()
 
 def ai_polish(title):
     client = genai.Client()
