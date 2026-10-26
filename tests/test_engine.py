@@ -1,6 +1,5 @@
 import json
 import re
-import shutil
 from types import SimpleNamespace
 from datetime import datetime, timezone
 
@@ -154,15 +153,24 @@ def test_database_sync_resets_polish_only_when_original_changes():
     assert db["a"]["description"] == "Updated description"
 
 
-def test_migration_on_copy_of_video_db_preserves_original_title(tmp_path):
-    source = engine.Path(__file__).resolve().parents[1] / "video_db.json"
-    copied = tmp_path / "video_db.json"
-    shutil.copyfile(source, copied)
-    database = json.loads(copied.read_text(encoding="utf-8"))
-    old_record = next(
-        record for record in database.values()
-        if record.get("polished") and record.get("polished_at")
-    )
+def test_migration_on_copy_of_video_db_preserves_original_title():
+    # The real video_db.json is already migrated, so it no longer contains
+    # legacy "polished" records. Build representative legacy data instead.
+    database = {
+        "old": {
+            "title": "Polished title",
+            "original_title": "Original title",
+            "polished": True,
+            "polished_at": "2025-01-01T00:00:00Z",
+        },
+        "plain": {
+            "title": "Never polished",
+            "original_title": "Never polished",
+            "polished": False,
+            "polished_at": None,
+        },
+    }
+    old_record = database["old"]
     original = old_record["original_title"]
     polished_title = old_record["title"]
     polished_at = old_record["polished_at"]
