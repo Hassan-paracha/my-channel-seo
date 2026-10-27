@@ -4,6 +4,7 @@ import os
 import random
 import re
 import tempfile
+import threading
 import time
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -26,10 +27,80 @@ CYCLE_UNPOLISHED_DATE = "2000-01-01"
 MAX_DAILY_GEMINI_REQUESTS = 250
 GEMINI_REQUEST_INTERVAL = 6.1
 GOOGLE_VERIFICATION_TAG = '<meta name="google-site-verification" content="ZN7nXzbJoz8vA76X-nvRU56HxBBlwHebN-3pI-5i4uY" />'
-PROMPT_VERSION = 1
+PROMPT_VERSION = 2
 SEO_BATCH_SIZE = 35
 MIN_REFRESH_DAYS = 21
 _AUTOCOMPLETE_CACHE = {}
+TRENDING_KEYWORDS_FALLBACK = (
+    "viral shorts, trending pakistan, funny video, vlog, hindi, urdu, desi, "
+    "reels, youtube shorts 2025"
+)
+TRENDING_TOPICS = [
+    "youtube shorts", "viral video", "trending pakistan", "vlog", "funny video",
+]
+
+
+def get_trending_keywords():
+    def fetch():
+        from pytrends.request import TrendReq
+
+        pytrends = TrendReq(
+            hl="en-US",
+            tz=300,
+            timeout=(2, 2),
+            retries=0,
+            backoff_factor=0.1,
+        )
+        keywords = []
+
+        def append_queries(frame):
+            if frame is None:
+                return
+            queries = frame.get("query") if hasattr(frame, "get") else None
+            if queries is not None:
+                for query in queries:
+                    if isinstance(query, str) and query.strip():
+                        keywords.append(query.strip())
+
+        for country in ("pakistan", "india"):
+            append_queries(pytrends.trending_searches(pn=country))
+
+        for geo in ("PK", "IN"):
+            pytrends.build_payload(
+                kw_list=TRENDING_TOPICS,
+                timeframe="now 7-d",
+                geo=geo,
+            )
+            related = pytrends.related_queries()
+            for topic in TRENDING_TOPICS:
+                for frame in (related.get(topic) or {}).values():
+                    append_queries(frame)
+
+        deduplicated = []
+        seen = set()
+        for keyword in keywords:
+            clean_keyword = re.sub(r"\s+", " ", keyword).strip(" ,")
+            key = clean_keyword.casefold()
+            if clean_keyword and key not in seen:
+                seen.add(key)
+                deduplicated.append(clean_keyword)
+        return ", ".join(deduplicated[:20]) or TRENDING_KEYWORDS_FALLBACK
+
+    result = []
+    errors = []
+
+    def run_fetch():
+        try:
+            result.append(fetch())
+        except Exception as error:
+            errors.append(error)
+
+    worker = threading.Thread(target=run_fetch, daemon=True)
+    worker.start()
+    worker.join(timeout=27)
+    if worker.is_alive() or errors or not result:
+        return TRENDING_KEYWORDS_FALLBACK
+    return result[0]
 
 def load_db():
     if not os.path.exists(DB_FILE):
@@ -909,7 +980,7 @@ def _autocomplete_suggestions(seeds):
     return list(dict.fromkeys(suggestions))
 
 
-def _seo_model_input(video_id, video):
+def _seo_model_input(video_id, video, trending_keywords):
     topic = _topic_for_video(video)
     tags = video.get("tags") if isinstance(video.get("tags"), list) else []
     title = str(video.get("original_title") or "YouTube Video")
@@ -921,9 +992,12 @@ def _seo_model_input(video_id, video):
     description = str(video.get("description") or "")
     today = date.today().isoformat()
     title_instruction = (
-        f"It's {today}. Rewrite this YouTube title for maximum CTR and trending "
-        f"Pakistani/Indian SEO. Use Hinglish + English mix. Video hint: {description[:100]}. "
-        f"Return ONLY the title: {title}"
+        f"It's {today}. These are currently trending search terms in Pakistan and India: "
+        f"{trending_keywords}.\n\n"
+        "Rewrite this YouTube video title to maximize CTR and SEO using the most relevant "
+        "trending terms above. Use a natural Hinglish + English mix. Keep it under 70 "
+        f"characters. Video context hint: {description}.\n\n"
+        f"Return ONLY the rewritten title, nothing else: {title}"
     )
     return {
         "id": video_id,
@@ -1028,9 +1102,14 @@ def _available_gemini_models(client):
     return [name for name in configured if name in listed]
 
 
-def _generate_seo_batch(client, models, batch, db, request_counts, daily_limit):
+def _generate_seo_batch(
+    client, models, batch, db, request_counts, daily_limit, trending_keywords
+):
     expected_ids = [video_id for video_id, _ in batch]
-    inputs = [_seo_model_input(video_id, video) for video_id, video in batch]
+    inputs = [
+        _seo_model_input(video_id, video, trending_keywords)
+        for video_id, video in batch
+    ]
     prompt = (
         "Use each item's title_instruction as the title-generation instruction, then create truthful "
         "YouTube SEO metadata in Hinglish + English for each video. "
@@ -1111,7 +1190,7 @@ def _record_seo(video, result, model, updated_at):
     video["last_refreshed"] = updated_at[:10]
 
 
-def _refresh_seo(db, force_ids=None):
+def _refresh_seo(db, force_ids=None, trending_keywords=TRENDING_KEYWORDS_FALLBACK):
     try:
         refresh_limit = max(0, int(os.getenv("REFRESH_PER_DAY") or "35"))
         daily_limit = max(0, int(os.getenv("GEMINI_DAILY_REQUEST_LIMIT") or "18"))
@@ -1136,7 +1215,8 @@ def _refresh_seo(db, force_ids=None):
     for offset in range(0, len(queue), SEO_BATCH_SIZE):
         batch = queue[offset:offset + SEO_BATCH_SIZE]
         model, results, quota = _generate_seo_batch(
-            client, models, batch, db, request_counts, daily_limit
+            client, models, batch, db, request_counts, daily_limit,
+            trending_keywords,
         )
         if quota:
             quota_stopped = True
@@ -1452,6 +1532,8 @@ def generate_site(db):
 
 
 def run_rolling_cycle():
+    trending_keywords = get_trending_keywords()
+    print(f"Live trending keywords: {trending_keywords}")
     db = migrate_database(load_db())
     dry_run = os.getenv("DRY_RUN") == "1"
     changed_titles = set()
@@ -1480,7 +1562,7 @@ def run_rolling_cycle():
                 )
         changed_titles = _detail_sync(db)
         save_db(db)
-        refreshed = _refresh_seo(db, changed_titles)
+        refreshed = _refresh_seo(db, changed_titles, trending_keywords)
         save_db(db)
         print(f"SEO refreshed: {refreshed}")
     else:

@@ -1,11 +1,106 @@
 import json
 import re
+import sys
 from types import SimpleNamespace
+from types import ModuleType
 from datetime import datetime, timezone
 
 import pytest
 
 import engine
+
+
+def test_trending_keywords_fetch_and_deduplicate_seven_day_queries(monkeypatch):
+    calls = []
+
+    class FakeTrendReq:
+        def __init__(self, **options):
+            assert options["timeout"] == (2, 2)
+            assert options["retries"] == 0
+
+        def trending_searches(self, pn):
+            calls.append(("trending", pn))
+            return {"query": [f"Popular {pn} {index}" for index in range(6)] + ["Same keyword"]}
+
+        def build_payload(self, **options):
+            calls.append(("payload", options))
+
+        def related_queries(self):
+            return {
+                topic: {
+                    "top": {"query": ["Same keyword", topic]},
+                    "rising": {"query": [f"{topic} rising"]},
+                }
+                for topic in engine.TRENDING_TOPICS
+            }
+
+    package = ModuleType("pytrends")
+    package.__path__ = []
+    request_module = ModuleType("pytrends.request")
+    request_module.TrendReq = FakeTrendReq
+    monkeypatch.setitem(sys.modules, "pytrends", package)
+    monkeypatch.setitem(sys.modules, "pytrends.request", request_module)
+
+    keywords = engine.get_trending_keywords()
+
+    assert keywords.split(", ")[:2] == ["Popular pakistan 0", "Popular pakistan 1"]
+    assert len(keywords.split(", ")) == 20
+    assert len({keyword.casefold() for keyword in keywords.split(", ")}) == 20
+    assert "youtube shorts" in keywords
+    payloads = [options for kind, options in calls if kind == "payload"]
+    assert [payload["geo"] for payload in payloads] == ["PK", "IN"]
+    assert all(payload["timeframe"] == "now 7-d" for payload in payloads)
+
+
+def test_trending_keywords_silently_fall_back_on_fetch_error(monkeypatch):
+    package = ModuleType("pytrends")
+    package.__path__ = []
+    request_module = ModuleType("pytrends.request")
+
+    class BrokenTrendReq:
+        def __init__(self, **_options):
+            raise RuntimeError("rate limited")
+
+    request_module.TrendReq = BrokenTrendReq
+    monkeypatch.setitem(sys.modules, "pytrends", package)
+    monkeypatch.setitem(sys.modules, "pytrends.request", request_module)
+
+    assert engine.get_trending_keywords() == engine.TRENDING_KEYWORDS_FALLBACK
+
+
+def test_seo_model_input_includes_live_trends_in_title_prompt(monkeypatch):
+    monkeypatch.setattr(engine, "_autocomplete_suggestions", lambda _seeds: [])
+    keywords = "viral shorts, funny video"
+
+    result = engine._seo_model_input(
+        "video",
+        {"original_title": "Original title", "description": "Video context"},
+        keywords,
+    )
+
+    assert f"currently trending search terms in Pakistan and India: {keywords}" in result["title_instruction"]
+    assert "Video context hint: Video context." in result["title_instruction"]
+    assert "Return ONLY the rewritten title, nothing else: Original title" in result["title_instruction"]
+
+
+def test_rolling_cycle_fetches_trending_keywords_once_and_reuses_them(monkeypatch):
+    fetches = []
+    refreshes = []
+    monkeypatch.setattr(engine, "get_trending_keywords", lambda: fetches.append("trends") or "live terms")
+    monkeypatch.setattr(engine, "load_db", lambda: {})
+    monkeypatch.setattr(engine, "migrate_database", lambda db: db)
+    monkeypatch.setattr(engine, "get_channel_videos", lambda: [])
+    monkeypatch.setattr(engine, "_apply_listing_sync", lambda *_args: None)
+    monkeypatch.setattr(engine, "_detail_sync", lambda _db: set())
+    monkeypatch.setattr(engine, "save_db", lambda _db: None)
+    monkeypatch.setattr(engine, "_refresh_seo", lambda _db, _ids, trends: refreshes.append(trends) or 0)
+    monkeypatch.setattr(engine, "generate_site", lambda _db: (0, 0))
+    monkeypatch.delenv("DRY_RUN", raising=False)
+
+    engine.run_rolling_cycle()
+
+    assert fetches == ["trends"]
+    assert refreshes == ["live terms"]
 
 
 def test_database_load_save_and_corrupt_json_safety(tmp_path, monkeypatch):
