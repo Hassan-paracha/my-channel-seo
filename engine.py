@@ -660,7 +660,12 @@ def migrate_database(db):
 def _get_videos_with_ytdlp():
     """Return the complete uploads listing from yt-dlp's flat extractor."""
     channel_url = f"https://www.youtube.com/{CHANNEL_HANDLE}/videos"
-    options = {"quiet": True, "no_warnings": True, "extract_flat": True}
+    options = {
+        "quiet": True,
+        "no_warnings": True,
+        "extract_flat": True,
+        "playlist_items": "1:1000",
+    }
     with yt_dlp.YoutubeDL(options) as ydl:
         channel = ydl.extract_info(channel_url, download=False)
         channel_id = channel.get("id")
