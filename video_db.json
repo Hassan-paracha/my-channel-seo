@@ -2978,7 +2978,7 @@
         ],
         "last_synced": null,
         "duration_seconds": 6,
-        "view_count": 113000000,
+        "view_count": 114000000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -7524,7 +7524,17 @@
         "original_title": "kaya hi ye bike 🏍️start ni ho Rahi 🤔",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Ye bike start kyun nahi ho rahi Bike Problem #shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 15000000,
@@ -7533,17 +7543,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Ye bike start kyun nahi ho rahi Bike Problem #shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya hi ye bike start nahi ho rahi? #viralshorts",
+            "description": "Another hilarious take on a bike refusing to start. Enjoy this trending desi short video.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "41wAitG6Y2Y": {
         "title": "Papa ko kisne mara? Funny Prank #shorts #viral",
@@ -7731,7 +7749,17 @@
         "original_title": "kaya Hi ye motorbike 🏍️start ni Hoti 🤔 #shortsvideo #viralshot #shotsfeed #viral #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Motorbike start nahi hoti Motorbike Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 95000,
@@ -7740,17 +7768,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Motorbike start nahi hoti Motorbike Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya ye motorbike start nahi hoti? #viralshorts",
+            "description": "Motorbike starting issues never get old. Watch this funny viral short in Hindi, Urdu, and English mix.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "dmewABS7JUI": {
         "title": "Kya bike ko rok payenge? Bike Challenge #shorts #viral",
@@ -7758,7 +7794,17 @@
         "original_title": "kaya bike 🏍️ko rok paye gaye 🤔 #shortsvideo #viralshot #shotsfeed #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Kya bike ko rok payenge? Bike Challenge #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 71000,
@@ -7767,17 +7813,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Kya bike ko rok payenge? Bike Challenge #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya yeh bike rok paye ge? Funny moment #viralshorts",
+            "description": "Can they stop this runaway bike? Enjoy this funny desi short video with trending Hindi and Urdu commentary.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "hrt56xIqE50": {
         "title": "Kya ye bike start nahi hui? Bike Problem #shorts #viral",
@@ -7785,7 +7839,17 @@
         "original_title": "kaya ye bike 🏍️start ni hoi 🤔 #shortsfeed #viralshot #shortsvideo #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Kya ye bike start nahi hui? Bike Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 170000,
@@ -7794,17 +7858,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Kya ye bike start nahi hui? Bike Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya yeh bike start nahi hui? Desi comedy #viralshorts",
+            "description": "Another funny bike starting problem caught on camera. Enjoy this trending short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "vtS-yg021_Q": {
         "title": "Bike le kar kahan chale? Bike Ride #shorts #viral",
@@ -7812,7 +7884,17 @@
         "original_title": "bike 🏍️le kar kaha chaly🤔 #shortsvideo #viralshot #shotsfeed #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Bike le kar kahan chale? Bike Ride #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 156000,
@@ -7821,17 +7903,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Bike le kar kahan chale? Bike Ride #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Bike le kar kahan chale? Desi vlog #viralshorts",
+            "description": "Where are they heading with this bike? Watch a funny desi short featuring local vlog humor.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "BdwaDdR0A4E": {
         "title": "Motorcycle start kyun nahi hui Bike Problem #shorts #viral",
@@ -7884,7 +7974,17 @@
         "original_title": "kaya Hi ye 70cd bike 🏍️start ni Hoti 🤔 #shortsvideo #viralshot #shotsfeed #viral #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "CD 70 bike start nahi hoti Bike Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 1000000,
@@ -7893,17 +7993,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "CD 70 bike start nahi hoti Bike Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya ye 70cc bike start nahi hoti? #viralshorts",
+            "description": "A classic 70cc motorcycle starting struggle in Pakistan and India. Enjoy this funny desi short video.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "Y2Vc_rnxvHs": {
         "title": "Motorcycle start nahi hoti Bike Problem #shorts #viral",
@@ -8001,7 +8109,17 @@
         "original_title": "bike 🏍️start ni hoi har koi preshan 🤔 #shortsvideo #shotsfeed #viralvideo #shorts #youtubeshorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Bike start nahi hui sab pareshan Bike Problem #shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 315000,
@@ -8010,17 +8128,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Bike start nahi hui sab pareshan Bike Problem #shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Bike start nahi hui, sab pareshan! #viralshorts",
+            "description": "Desi bike starting trouble creates a funny moment in this viral short. Experience classic everyday struggles in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "m2i6SXY_JoM": {
         "title": "Village mein bike start nahi hui Bike Problem #shorts",
@@ -8028,7 +8154,17 @@
         "original_title": "village me bike 🏍️start ni hoi 🤔 #shortsvideo #viralshot #shortsfeed #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Village mein bike start nahi hui Bike Problem #shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 214000,
@@ -8037,17 +8173,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Village mein bike start nahi hui Bike Problem #shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Village me bike start nahi hui! #viralshorts",
+            "description": "Village life comes with quirky vehicle problems. Watch this funny desi short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "bjAnNFFgVzc": {
         "title": "5 log aur 1 kick dekhne ko mili Bike Kick #shorts #viral",
@@ -8055,7 +8199,17 @@
         "original_title": "Physics Fail Ho Gayi! ❌ 5 Log Aur 1 Kick—Dekho Kya Hua🤔 #shortsvideo #viralshort #shotsfeed #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "5 log aur 1 kick dekhne ko mili Bike Kick #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 84000,
@@ -8064,17 +8218,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "5 log aur 1 kick dekhne ko mili Bike Kick #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Physics fail! 5 log aur 1 kick ka kamaal #viralshorts",
+            "description": "A hilarious physics fail captured in a trending short video. Watch this desi comedy moment in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "QPUHcm6pvEU": {
         "title": "Ye kaisi bike ride hai? Fun Bike Ride #shorts #viral",
@@ -8172,7 +8334,17 @@
         "original_title": "kaya bike 🏍️ho gi start 🤔 #shortsvideo #viralshot #shotsfeed #viral #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Kya bike start hogi? Bike Start Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 367000,
@@ -8181,17 +8353,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Kya bike start hogi? Bike Start Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya bike hogi start? Funny desi short #viralshorts",
+            "description": "Will this motorcycle finally start? Watch the hilarious desi reactions in this trending short video.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "Tn-lSC_MR7E": {
         "title": "Bike start nahi hui kya karein Bike Problem #shorts #viral",
@@ -8334,7 +8514,17 @@
         "original_title": "kaya Itne Bojh Mein Bike 🏍️Kaise Start Hogi? 😂\" #shotsfeed #viralshot #shortsvideo #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Itne bojh mein bike kaise start hogi #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 2400000,
@@ -8343,17 +8533,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Itne bojh mein bike kaise start hogi #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya itne bojh mein bike kaise start hogi? #viralshorts",
+            "description": "Trying to start an overloaded bike leads to pure comedy. Watch this funny desi short video.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "ysY-edGQaQQ": {
         "title": "Gareeb ki bike kharab ho gayi Bike Repair #shorts #viral",
@@ -8361,7 +8559,17 @@
         "original_title": "greeb ki bike 🏍️hoi khrab 🤔 #shortsvideo #viralshot #shotsfeed #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb ki bike kharab ho gayi Bike Repair #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 67000,
@@ -8370,17 +8578,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb ki bike kharab ho gayi Bike Repair #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Garib ki bike ho gayi kharab! #viralshorts",
+            "description": "A humorous look at a vehicle breakdown in a desi village setting. Watch this viral short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "ezoXn0ZDDds": {
         "title": "Motorcycle baar baar kharab hoti hai Bike Repair #shorts",
@@ -8388,7 +8604,17 @@
         "original_title": "kaya hi ye motorcycle 🏍️kharb ho gati hi 🤔 #shortsfeed #viralshot #shortsvideo #viral #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Motorcycle baar baar kharab hoti hai Bike Repair #shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 69000,
@@ -8397,17 +8623,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Motorcycle baar baar kharab hoti hai Bike Repair #shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya ye motorcycle kharab ho gayi hai? #viralshorts",
+            "description": "A motorcycle breakdown leads to hilarious desi reactions. Watch this quick funny short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "hMDXqjcnzZk": {
         "title": "Bike start nahi hoti yaar Bike Start Problem #shorts #viral",
@@ -8415,7 +8649,17 @@
         "original_title": "kaya hi ye bike 🏍️start ni Hoti yar 🤔 #shortsvideo #viralshot #shortsfeed #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Bike start nahi hoti yaar Bike Start Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 1000000,
@@ -8424,17 +8668,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Bike start nahi hoti yaar Bike Start Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya hi ye bike start nahi hoti yaar? #viralshorts",
+            "description": "Everyday bike starting struggles in a funny desi short video. Watch this relatable moment in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "LXPUJXmkaiI": {
         "title": "Bike start hi nahi hoti Bike Start Problem #shorts #viral",
@@ -8532,7 +8784,17 @@
         "original_title": "kaya hi bike 🏍️start ni Hoti 🤔 #shortsfeed #viralshot #shortsvideo #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Bike start nahi hoti kya karein Bike Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:01.848989Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 121000000,
@@ -8541,17 +8803,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Bike start nahi hoti kya karein Bike Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:01.848989Z",
-            "model": null,
+            "title": "Kya hi bike start nahi hoti? Desi humor #viralshorts",
+            "description": "A classic relatable bike starting issue in a viral short. Enjoy this funny moment in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "YJ_XtShvx8Y": {
         "title": "Motorcycle start nahi hui Bike Start Problem #shorts #viral",
@@ -8811,7 +9081,17 @@
         "original_title": "bike 🏍️Hoti ni start kaya hi ye 🤔 #shotsfeed #viralshot #shortsvideo #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Bike Start Kyun Nahi Hoti 🏍️ #BikeStart #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 122000,
@@ -8820,17 +9100,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Bike Start Kyun Nahi Hoti 🏍️ #BikeStart #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Bike hoti nahi start, kya hi ye? #viralshorts",
+            "description": "Frustrating vehicle starting issues turned into comedy. Watch this trending short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "bPsxQv47saU": {
         "title": "Bike Start Hi Nahi Hoti 🏍️ #BikeProblem #Shorts",
@@ -8865,7 +9153,17 @@
         "original_title": "greeb ki bike 🏍️start ni hoi lagta 🤔 #shortsfeed #viralshot #shortsvideo #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Start Nahi Hui 🏍️ #Bike #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 93000,
@@ -8874,17 +9172,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Start Nahi Hui 🏍️ #Bike #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib ki bike start nahi hui lagta hai #viralshorts",
+            "description": "Another amusing attempt to revive a stubborn vehicle. Watch this trending short video.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "U5Beb_DN8FY": {
         "title": "Bike Ki Kick Nahi Lag Rahi 🏍️ #BikeKick #Shorts",
@@ -8919,7 +9225,17 @@
         "original_title": "greeb ki bike 🏍️masti me ruki 🤔 #shortsvideo #shotsfeed #viralshot #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Masti Me Ruk Gayi 🏍️ #Bike #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 106000,
@@ -8928,17 +9244,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Masti Me Ruk Gayi 🏍️ #Bike #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib ki bike masti mein ruki #viralshorts",
+            "description": "A quirky bike stop caught on camera in a funny village setting. Watch this trending short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "wbk1WYN-XAQ": {
         "title": "Ye Bike Chalti Kyun Nahi 🏍️ #BikeRider #Shorts",
@@ -9027,7 +9351,17 @@
         "original_title": "greeb ki bike 🏍️park ma khari 🤔 #shortsvideo #shotsfeed #shorts #viral #viralshot",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Park Me Khadi Hai 🏍️ #Bike #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 4,
         "view_count": 68000,
@@ -9036,17 +9370,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Park Me Khadi Hai 🏍️ #Bike #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib ki bike park mein khadi #viralshorts",
+            "description": "A simple parked motorcycle in a local setting becomes a viral moment. Watch this short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 4,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "FnmLJSC3Rss": {
         "title": "Ye Bike Hai Ya Kuch Aur 🏍️ #UniqueBike #Shorts",
@@ -9054,7 +9396,17 @@
         "original_title": "bike 🏍️hi ya Koi or cheiz 🤔 #shotsfeed #shortsvideo #shorts #viralshot #viral #trending",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Ye Bike Hai Ya Kuch Aur 🏍️ #UniqueBike #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 39000,
@@ -9063,17 +9415,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Ye Bike Hai Ya Kuch Aur 🏍️ #UniqueBike #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Bike hi ya koi aur cheez? #viralshorts",
+            "description": "Is that actually a motorcycle or something else entirely? Watch this funny short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "QdUhnbmGMig": {
         "title": "Is Bike Ki Price Kya Hogi 🏍️ #BikePrice #Shorts",
@@ -9135,7 +9495,17 @@
         "original_title": "kaya Hi ye bike 🏍️start ni Hotiiii 🤔 #shotsfeed #ytshorts #viralshot #shorts #viral #youtubeshorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Kya Ye Bike Start Hogi 🏍️ #BikeProblem #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 92000,
@@ -9144,17 +9514,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Kya Ye Bike Start Hogi 🏍️ #BikeProblem #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Kya hi ye bike start nahi hoti? #viralshorts",
+            "description": "Endless kicks and zero results with this stubborn motorcycle. Watch this funny desi short.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "cgsfdOE39b0": {
         "title": "Gareeb Ki Bike Railway Station Par 🏍️ #Bike #Shorts",
@@ -9243,7 +9621,17 @@
         "original_title": "♥️♥️Eid Mubarak ♥️♥️ bike ki tarf se 😂♥️🏍️ #shortsvideo #shorts  #viral #shotsfeed #viralshot",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Eid Mubarak Bike Ki Taraf Se 😂🏍️ #EidMubarak #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 4,
         "view_count": 331000,
@@ -9252,17 +9640,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Eid Mubarak Bike Ki Taraf Se 😂🏍️ #EidMubarak #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Eid Mubarak bike ki taraf se! #viralshorts",
+            "description": "A festive and funny greeting from a unique angle. Watch this short video in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 4,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "BO_mJB1ajVY": {
         "title": "Uncle Ko Bike Ne Pagal Kar Diya 🏍️ #Desi #Shorts",
@@ -9270,7 +9666,17 @@
         "original_title": "Uncle ko bike 🏍️ne pagal kar diya 🤔 #shortsfeed #viralvideo #viralshot #shortsvideo #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Uncle Ko Bike Ne Pagal Kar Diya 🏍️ #Desi #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 8,
         "view_count": 73000,
@@ -9279,17 +9685,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Uncle Ko Bike Ne Pagal Kar Diya 🏍️ #Desi #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Uncle ko bike ne pagal kar diya! #viralshorts",
+            "description": "An uncle struggles hilariously with a stubborn motorcycle. Enjoy this viral comedy short.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 8,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "WhL-c2Sqmp4": {
         "title": "Ye Bike Itni Viral Kyun Hui 🏍️ #ViralBike #Shorts",
@@ -9324,7 +9738,17 @@
         "original_title": "kaya Aap ye bike 🏍️chalana chahenge? 🏍️🤔  #shortsfeed #shorts #viral #viralshot #shortsvideo",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Kya Aap Ye Bike Chalana Chahenge 🏍️ #Bike #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 4,
         "view_count": 64000,
@@ -9333,17 +9757,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Kya Aap Ye Bike Chalana Chahenge 🏍️ #Bike #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Kya aap yeh bike chalana chahenge? #viralshorts",
+            "description": "Would you dare to ride this unique motorcycle? Watch and comment in this fun desi short.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 4,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "4vizqQ0_wGo": {
         "title": "Favorite Bike Price Guess Karein 🏍️💰 #Bike #Shorts",
@@ -9351,7 +9783,17 @@
         "original_title": "Aapki favorite bike kaunsi hai? 🏍️❤️Price guess karein? 💰🤔 #shortsfeed #shorts #viralshot #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Favorite Bike Price Guess Karein 🏍️💰 #Bike #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 1000000,
@@ -9360,17 +9802,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Favorite Bike Price Guess Karein 🏍️💰 #Bike #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Aapki favorite bike kaunsi hai? Price guess karein! #viralshorts",
+            "description": "Guess the price of this popular motorcycle in a fun interactive short. Enjoy this desi video in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "x8XrA4ItWpA": {
         "title": "Is Bike Ka Raaz Kya Hai 🏍️ #MysteryBike #Shorts",
@@ -9405,7 +9855,17 @@
         "original_title": "greeb ke bache 😱ko kon le gaya 🤔#shortvideos #viralshot #shotsfeed #shorts #viral #ytshorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ke Bachhe Ko Kaun Le Gaya 😱 #Desi #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 27,
         "view_count": 40000,
@@ -9414,17 +9874,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ke Bachhe Ko Kaun Le Gaya 😱 #Desi #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib ke bachhe ko kaun le gaya? #viralshorts",
+            "description": "A mysterious and emotional family moment captured on camera. Watch this viral short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 27,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "vRVFbW6YUH4": {
         "title": "Kya Aisi Bike Pehle Dekhi Hai 🏍️ #UniqueBike #Shorts",
@@ -9513,7 +9981,17 @@
         "original_title": "greeb ki bike 🏍️Chali ni ho 🤔 #shotsfeed #shorts #viralshot #shortsvideo #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Chali Hi Nahi 🏍️ #Bike #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 4,
         "view_count": 41000,
@@ -9522,17 +10000,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Chali Hi Nahi 🏍️ #Bike #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib ki bike chali hi nahi #viralshorts",
+            "description": "When the vehicle refuses to cooperate at the worst time. Watch this funny short video.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 4,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "i0rZJluK05k": {
         "title": "Ye Bike Bar Bar Ruk Jati Hai 🏍️ #Bike #Shorts",
@@ -9567,7 +10053,17 @@
         "original_title": "greeb ki bike 🏍️bacho ka jula 🤔 #shortsvideo #viralshot #shotsfeed #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Bachon Ka Jhula 🏍️ #BikeRide #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 71000,
@@ -9576,17 +10072,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Bachon Ka Jhula 🏍️ #BikeRide #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib ki bike bachon ka jhula #viralshorts",
+            "description": "Kids turning a parked motorcycle into a play swing. Watch this amusing desi short video.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "7qydLpdTIKk": {
         "title": "Kya Hai Ye Bike Chalti Hi Nahi 🏍️ #Bike #Shorts",
@@ -9594,7 +10098,17 @@
         "original_title": "kaya Hi ye bike 🏍️chalti hi ni 🤔 #shortsvideo #viralshot #shotsfeed #viral #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Kya Hai Ye Bike Chalti Hi Nahi 🏍️ #Bike #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 65000,
@@ -9603,17 +10117,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Kya Hai Ye Bike Chalti Hi Nahi 🏍️ #Bike #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Kya hi ye bike chalti hi nahi? #viralshorts",
+            "description": "A funny look at a motorcycle that refuses to move forward. Enjoy this trending short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "xdoNcBgghdE": {
         "title": "Gareeb Ki Bike Masti Ki Ride 🏍️ #BikeRide #Shorts",
@@ -9648,7 +10170,17 @@
         "original_title": "kaya greeb ki bike 🏍️chale gi 🤔 #shortsvideo #viralshot #shotsfeed #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Kya Gareeb Ki Bike Chalegi 🏍️ #BikeRide #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 52000,
@@ -9657,17 +10189,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Kya Gareeb Ki Bike Chalegi 🏍️ #BikeRide #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Kya garib ki bike chalegi? #viralshorts",
+            "description": "Will this local motorcycle finally get going? Watch the suspense unfold in this funny desi short.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "tAudPdAV9ro": {
         "title": "Gareeb Papa Ki Bike Kharab Ho Gayi 🏍️ #Bike #Shorts",
@@ -9729,7 +10269,17 @@
         "original_title": "greeb bache bike🏍️ ka jula 🛝 #shotsfeed #shortsvideo #shorts #viralshot #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Bachhe Aur Bike Ka Jhula 🏍️🛝 #Desi #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 1700000,
@@ -9738,17 +10288,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Bachhe Aur Bike Ka Jhula 🏍️🛝 #Desi #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib bachhe aur bike ka jhula #viralshorts",
+            "description": "Children finding creative ways to play with a motorcycle. Enjoy this innocent and funny desi short.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "vaiG37JuclY": {
         "title": "Balloon Ke Saath Kaun Khelega 🎈 #Desi #Shorts",
@@ -9783,7 +10341,17 @@
         "original_title": "greeb ki bike 🏍️gomne lagi 🤔 #shotsfeed #shortsvideo #viralshot #shorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Ghoomne Lagi 🏍️ #BikeRide #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 94000,
@@ -9792,17 +10360,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Ghoomne Lagi 🏍️ #BikeRide #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib ki bike ghoomne lagi! #viralshorts",
+            "description": "An unexpected spin of events with a village motorcycle. Enjoy this funny short video.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "k_U8mB64_Zs": {
         "title": "Kya Hai Ye Bike Start Kyun Nahi Hoti 🏍️ #Bike #Shorts",
@@ -9837,7 +10413,17 @@
         "original_title": "greeb bache ko bike 🏍️ka surprised 🤔 #shortsfeed #shortsvideo #shorts #ytshorts #viral",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Bachhe Ko Bike Ka Surprise 🏍️ #Surprise #Shorts",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:00:28.903536Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 58000,
@@ -9846,17 +10432,25 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Bachhe Ko Bike Ka Surprise 🏍️ #Surprise #Shorts",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:00:28.903536Z",
-            "model": null,
+            "title": "Garib bachhe ko bike ka surprise! #viralshorts",
+            "description": "A heartwarming and surprising moment involving children and a motorcycle. Watch this short in Hindi and Urdu.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-07"
     },
     "iXKbinQ4NzY": {
         "title": "Gareeb Ki Bike Aur Bakri 🏍️ #shorts #viral",
@@ -13404,7 +13998,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 601,
-        "view_count": 236,
+        "view_count": 237,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -18756,7 +19350,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 4,
-        "view_count": 7100,
+        "view_count": 7200,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -19048,7 +19642,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 104,
-        "view_count": 4700,
+        "view_count": 4900,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -19117,7 +19711,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 5,
-        "view_count": 231000,
+        "view_count": 232000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -19184,7 +19778,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 4,
-        "view_count": 38000,
+        "view_count": 39000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -19256,7 +19850,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 5,
-        "view_count": 118000,
+        "view_count": 121000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -19323,7 +19917,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 5,
-        "view_count": 45000,
+        "view_count": 46000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -19358,7 +19952,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 23,
-        "view_count": 69000,
+        "view_count": 71000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -19394,7 +19988,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 5,
-        "view_count": 72000,
+        "view_count": 73000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -19463,7 +20057,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 7,
-        "view_count": 22000,
+        "view_count": 23000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -22921,7 +23515,7 @@
         "upload_date": null,
         "duration_seconds": 5,
         "duration": 5,
-        "view_count": 46000,
+        "view_count": 47000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23189,7 +23783,7 @@
         "upload_date": null,
         "duration_seconds": 5,
         "duration": 5,
-        "view_count": 18000,
+        "view_count": 19000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23254,7 +23848,7 @@
         "upload_date": null,
         "duration_seconds": 6,
         "duration": 6,
-        "view_count": 19000,
+        "view_count": 23000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23288,7 +23882,7 @@
         "upload_date": null,
         "duration_seconds": 5,
         "duration": 5,
-        "view_count": 45000,
+        "view_count": 46000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23322,7 +23916,7 @@
         "upload_date": null,
         "duration_seconds": 12,
         "duration": 12,
-        "view_count": 38000,
+        "view_count": 39000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23356,7 +23950,7 @@
         "upload_date": null,
         "duration_seconds": 17,
         "duration": 17,
-        "view_count": 25000,
+        "view_count": 27000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23424,7 +24018,7 @@
         "upload_date": null,
         "duration_seconds": 5,
         "duration": 5,
-        "view_count": 9500,
+        "view_count": 15000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23458,7 +24052,7 @@
         "upload_date": null,
         "duration_seconds": 12,
         "duration": 12,
-        "view_count": 2000,
+        "view_count": 2700,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23492,7 +24086,7 @@
         "upload_date": null,
         "duration_seconds": 11,
         "duration": 11,
-        "view_count": 19000,
+        "view_count": 36000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -23512,6 +24106,72 @@
             ],
             "prompt_version": 2,
             "updated_at": "2026-11-06T23:41:49.164425Z",
+            "model": "gemini-3.5-flash-lite",
+            "source_tags": []
+        },
+        "seo_refresh_pending": false
+    },
+    "3qPYUftTEsc": {
+        "original_title": "Ye bike 🛵kiss ko mily gi 🤔 #shortvideo #viralshorts #shortsfeed #shorts #viral",
+        "seo_history": [],
+        "last_synced": null,
+        "published_at": null,
+        "upload_date": null,
+        "duration_seconds": 27,
+        "duration": 27,
+        "view_count": 3500,
+        "tags": [],
+        "description": "",
+        "status": "active",
+        "missing_count": 0,
+        "last_refreshed": "2026-11-07",
+        "seo": {
+            "title": "Ye bike kiss ko milegi? Desi funny vlog #viralshorts",
+            "description": "Watch this funny desi bike moment in Hinglish. A quick viral short capturing everyday village life humor.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
+            "model": "gemini-3.5-flash-lite",
+            "source_tags": []
+        },
+        "seo_refresh_pending": false
+    },
+    "dgEPZz9iNNk": {
+        "original_title": "Hassan🙋🏼 ko keyu mara 🤔😱 #shortvideo #viralshorts #shortsfeed #shorts #viral",
+        "seo_history": [],
+        "last_synced": null,
+        "published_at": null,
+        "upload_date": null,
+        "duration_seconds": 13,
+        "duration": 13,
+        "view_count": 11000,
+        "tags": [],
+        "description": "",
+        "status": "active",
+        "missing_count": 0,
+        "last_refreshed": "2026-11-07",
+        "seo": {
+            "title": "Hassan ko kyun mara? Funny desi moment #viralshorts",
+            "description": "A funny viral video clip capturing local reactions in Urdu and Hindi. Watch the full desi short for a good laugh.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "desi",
+                "hindi",
+                "urdu",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-07T22:35:46.142014Z",
             "model": "gemini-3.5-flash-lite",
             "source_tags": []
         },
