@@ -2978,7 +2978,7 @@
         ],
         "last_synced": null,
         "duration_seconds": 6,
-        "view_count": 116000000,
+        "view_count": 117000000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -14488,7 +14488,17 @@
         "original_title": "greeb ki bike 🏍️kheet me 🤔 #shotfeed #shortsvideo #viralshot #shorts #youtuber #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Khet Mein 🏍️ Gareeb Ki Bike #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 68000,
@@ -14497,17 +14507,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Khet Mein 🏍️ Gareeb Ki Bike #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ki Bike Khet Mein Kyo Chali? 🏍️ #viralshorts",
+            "description": "Dekhiye khet mein bike ke sath kya unique moment hua. Desi style viral shorts aur reels zaroor dekhein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "p9K-FBx5-38": {
         "title": "Gareeb Ki Bike Road Par 🏍️ Gareeb Ki Bike #shorts #viral",
@@ -14515,7 +14532,17 @@
         "original_title": "greeb ki bike 🏍️road per 🤔 #shotsfeed #viralshot #shortvideo #youtuber #shorts #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Road Par 🏍️ Gareeb Ki Bike #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 607000,
@@ -14524,17 +14551,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Road Par 🏍️ Gareeb Ki Bike #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ki Bike Road Par Aagayi 🏍️ #viralshorts",
+            "description": "Dekhiye road par bike ke sath kya twist aaya. Desi vlogs aur viral trending reels ke sath juday rahein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "nd7MBSgD8L0": {
         "title": "Gareeb Ne Bike Kyun Nahi Chalai 🏍️ Gareeb Ki Bike #shorts #viral",
@@ -14542,7 +14576,17 @@
         "original_title": "greeb ne bike 🏍️keyu ni chali 🤔 #shotsfeed #shortvideos #viralshot #youtuber #reels #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ne Bike Kyun Nahi Chalai 🏍️ Gareeb Ki Bike #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 4,
         "view_count": 271000,
@@ -14551,17 +14595,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ne Bike Kyun Nahi Chalai 🏍️ Gareeb Ki Bike #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ne Bike Kyon Nahi Chalai? 🏍️ #viralshorts",
+            "description": "Dekhiye bike na chalane ke piche kya vajah thi. Desi reels aur trending viral shorts yahan dekhein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 4,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "b3WKIG5chZQ": {
         "title": "Aa Gaya Part 2 Hasna Mana Hai 😂😂 Funny Video #shorts #viral",
@@ -14569,7 +14620,17 @@
         "original_title": "A Gaya part 2 hasna mana hi 😂😂 #youtuber #shorts #viralshot #shotvideo #shotsfeed #viral #trending",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Aa Gaya Part 2 Hasna Mana Hai 😂😂 Funny Video #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 212,
         "view_count": 705,
@@ -14578,17 +14639,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Aa Gaya Part 2 Hasna Mana Hai 😂😂 Funny Video #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Hansna Mana Hai Part 2 Challenge! 😂😂 #funnyvideo",
+            "description": "Dekhiye yeh zabardast hansna mana hai part 2 challenge video. Apni hasi rok kar dikhaiye is comedy short mein.",
+            "keywords": [
+                "funny video",
+                "viral shorts",
+                "trending pakistan",
+                "desi comedy",
+                "reels",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 212,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "SQ_Op9X1o_U": {
         "title": "Gareeb Ki Bike Ko Kya Hua 🏍️😭 Bike Problem #shorts #viral",
@@ -14596,7 +14664,17 @@
         "original_title": "greeb ki bike 🏍️ko kaya Howa 😭😭😭 #shotsfeed #viralshot #shotsvideo #youtuber #shorts #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Ko Kya Hua 🏍️😭 Bike Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 4,
         "view_count": 47000,
@@ -14605,17 +14683,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Ko Kya Hua 🏍️😭 Bike Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ki Bike Ko Kya Hua? 🏍️😭 #viralshorts",
+            "description": "Dekhiye road par bike ke achanak rukne par kya hua. Desi shorts aur trending viral videos yahan dekhein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi",
+                "funny video"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 4,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "fVnZQL_B6vA": {
         "title": "Gareeb Ki Bike Kyun Ruki 🏍️ Gareeb Ki Bike #shorts #viral",
@@ -14623,7 +14708,17 @@
         "original_title": "greeb ki bike 🏍️keyo ruki 🤔 #shotsfeed #viralshot #shortvideos #shorts #youtuber #teels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Kyun Ruki 🏍️ Gareeb Ki Bike #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 45000,
@@ -14632,17 +14727,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Kyun Ruki 🏍️ Gareeb Ki Bike #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ki Bike Raste Me Kyon Ruki? 🏍️ #viralshorts",
+            "description": "Dekhiye raste mein bike achanak kyon ruk gayi. Desi viral reels aur funny videos ka maza lein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "funny video"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "ElYl1n4neyA": {
         "title": "Hassan To Bas Nahi Kar Raha 🏍️ Funny Vlog #shorts #viral",
@@ -14650,7 +14752,17 @@
         "original_title": "Hassan🏍️ to bass ni kar raha🤔 #shotsfeed #viralshot #shotsvideo #youtuber #shorts #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Hassan To Bas Nahi Kar Raha 🏍️ Funny Vlog #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 7,
         "view_count": 5100,
@@ -14659,17 +14771,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Hassan To Bas Nahi Kar Raha 🏍️ Funny Vlog #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Hassan To Bas Hi Nahi Kar Raha! 🏍️ #reels",
+            "description": "Dekhiye Hassan bike ke sath kya dhamal kar raha hai. Aise mazedar desi vlogs aur viral shorts follow karein.",
+            "keywords": [
+                "viral shorts",
+                "reels",
+                "trending pakistan",
+                "desi vlog",
+                "funny video",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 7,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "iqTI5qHErOo": {
         "title": "Yeh Kya Hua Bike Ko 🏍️ Bike Repair #shorts #viral",
@@ -14677,7 +14796,17 @@
         "original_title": "ye kaya Howa bike 🏍️ko 🤔 #shotsfeed #viralshot #shortvideo #youtuber #shorts #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Yeh Kya Hua Bike Ko 🏍️ Bike Repair #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 266000,
@@ -14686,17 +14815,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Yeh Kya Hua Bike Ko 🏍️ Bike Repair #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Yeh Kya Hua Bike Ko Achanak? 🏍️ #viralshorts",
+            "description": "Dekhiye raste par chalte hue bike ko kya achanak ho gaya. Aise viral shorts aur desi reels dekhte rahein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "nJ_vQ3cnmwM": {
         "title": "100 Year Old Stunt Reaction 😱 Hasna Mana Hai #shorts #funny",
@@ -14704,7 +14840,17 @@
         "original_title": "I tried not to laugh at this 100-Year-Old Stunt! 😱 (Hassna mana hey) (Reaction) #shortsfeed",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "100 Year Old Stunt Reaction 😱 Hasna Mana Hai #shorts #funny",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 103,
         "view_count": 183,
@@ -14713,17 +14859,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "100 Year Old Stunt Reaction 😱 Hasna Mana Hai #shorts #funny",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Tried Not To Laugh Stunt Reaction! 😱 #funnyvideo",
+            "description": "Dekhiye is purane stunt par reaction video, jisme hansna mana hai. Majedar comedy aur funny clips ka maza lein.",
+            "keywords": [
+                "funny video",
+                "viral shorts",
+                "trending pakistan",
+                "reaction video",
+                "desi comedy",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 103,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "Q2NodNKlx_M": {
         "title": "Yeh Kya Hua 😱 Bike Lover Funny Video #shorts #bikelover",
@@ -14731,7 +14884,17 @@
         "original_title": "ye kaya Howa 🤔 #shortsfeed #viralshot #shortvideos #youtuber #shorts #funny #bikelover",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Yeh Kya Hua 😱 Bike Lover Funny Video #shorts #bikelover",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 73000,
@@ -14740,17 +14903,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Yeh Kya Hua 😱 Bike Lover Funny Video #shorts #bikelover",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Yeh Kya Ho Gaya Bike Ke Sath? 🤔 #viralshorts",
+            "description": "Dekhiye achanak bike ke sath kya unique scene hua. Desi comedy aur viral reels ke liye dekhte rahiye.",
+            "keywords": [
+                "family funny moments",
+                "funny video",
+                "viral shorts",
+                "trending pakistan",
+                "reels",
+                "desi"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "f1KnlBgf9fs": {
         "title": "Gareeb Ki Bike 🏍️ Funny Short #shorts #viral",
@@ -14758,7 +14928,17 @@
         "original_title": "greeb ki bike 🏍️🤔🤔 #shortsfeed #viralshot #shortvideos #funny #youtuber #shorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike 🏍️ Funny Short #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 58000,
@@ -14767,17 +14947,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike 🏍️ Funny Short #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ki Bike Ka Mystery! 🏍️🤔 #funnyvideo",
+            "description": "Dekhiye gareeb ki bike ke sath kya anokha scene hua. Hasi aur entertainment se bhari desi viral short video.",
+            "keywords": [
+                "viral shorts",
+                "funny video",
+                "trending pakistan",
+                "reels",
+                "desi",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "4ATrgoJYrZU": {
         "title": "Phir Se Maidan Mein Aagayi Bike 😂😂 Bike Stunt #shorts #viral",
@@ -14785,7 +14972,17 @@
         "original_title": "ye le a gi phir medan me bike 😂😂 #shortsfeed #viralvideos #shorts #trending #viralshot #youtuber",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Phir Se Maidan Mein Aagayi Bike 😂😂 Bike Stunt #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 7100,
@@ -14794,17 +14991,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Phir Se Maidan Mein Aagayi Bike 😂😂 Bike Stunt #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Phir Se Maidan Mein Bike Aagayi! 😂😂 #reels",
+            "description": "Dekhiye maidan mein phir se bike ki entry kaise hui. Yeh mazedar viral short video aapka din bana degi.",
+            "keywords": [
+                "funny video",
+                "viral shorts",
+                "reels",
+                "trending pakistan",
+                "desi",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "dFDTfOaX2d8": {
         "title": "Bike Phir Kharab Ho Gayi 🏍️😯 Bike Breakdown #shorts #viral",
@@ -14812,7 +15016,17 @@
         "original_title": "bike 🏍️ phr khraab hogai 😯 #shortvideos #shorts #shortsfeed #trending #viral #foryou",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Bike Phir Kharab Ho Gayi 🏍️😯 Bike Breakdown #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 33000,
@@ -14821,17 +15035,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Bike Phir Kharab Ho Gayi 🏍️😯 Bike Breakdown #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Bike Phir Se Kharab Ho Gayi! 🏍️😯 #viralshorts",
+            "description": "Dekhiye raste mein bike phir se kharab hone par kya suspense bana. Desi reels aur trending shorts dekhein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "desi",
+                "reels",
+                "funny video"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "qC8WEQyVkDI": {
         "title": "Hassan Ye To Cheating Hai 😂😂 Funny Comedy #shorts #viral",
@@ -14839,7 +15060,17 @@
         "original_title": "Hassan ye to cheating hi😂😂 #shortsfeed #viralshorts #shortvideos #youtuber #ytshorts #shorts #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Hassan Ye To Cheating Hai 😂😂 Funny Comedy #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 10,
         "view_count": 8200,
@@ -14848,17 +15079,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Hassan Ye To Cheating Hai 😂😂 Funny Comedy #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Hassan Yeh To Cheating Hai! 😂😂 #funnyvideo",
+            "description": "Dekhiye Hassan ne khel mein kaise cheating ki aur sab haans pade. Desi comedy aur funny shorts dekhein.",
+            "keywords": [
+                "funny video",
+                "viral shorts",
+                "trending pakistan",
+                "reels",
+                "desi comedy",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 10,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "LrqUeH_SS2M": {
         "title": "Hassan Ko Kya Mila Gift 🤔 Surprise Gift #shorts #funny",
@@ -14866,7 +15104,17 @@
         "original_title": "Hassan ko kaya mila gift 🤔 #shortsfeed #viralshot #shotsvideo #youtuber #ytshorts #funny",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Hassan Ko Kya Mila Gift 🤔 Surprise Gift #shorts #funny",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 15,
         "view_count": 6000,
@@ -14875,17 +15123,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Hassan Ko Kya Mila Gift 🤔 Surprise Gift #shorts #funny",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Hassan Ko Kya Gift Mila? 🤔 #funnyvideo",
+            "description": "Dekhiye Hassan ko surprises mein kya mila aur uska reaction kaisa tha. Family funny moments dekh kar maza aayega.",
+            "keywords": [
+                "family funny moments",
+                "funny video",
+                "viral shorts",
+                "reels",
+                "trending pakistan",
+                "desi"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 15,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "BMZjUFBgiXE": {
         "title": "Gareeb Bachon Ko Free Jhoola Mila 🛝 Help Poor #shorts #viral",
@@ -14893,7 +15148,17 @@
         "original_title": "greeb bacho ko jula 🛝 mila Free me 🤔 #shortsfeed #shotsvideo #viralshot #shots #ytshorts #youtuber",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Bachon Ko Free Jhoola Mila 🛝 Help Poor #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 7,
         "view_count": 47000,
@@ -14902,17 +15167,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Bachon Ko Free Jhoola Mila 🛝 Help Poor #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Bachon Ko Jhula Mila Free Mein! 🛝 #viralshorts",
+            "description": "Dekhiye gareeb bachon ko free mein jhula jhulte hue kitni khushi mili. Aise hi trending pakistan reels ke liye juday rahein.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "desi shorts",
+                "reels",
+                "hindi",
+                "urdu"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 7,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "zhzZLO-xYHI": {
         "title": "Hassan Ki Bike Start Nahi Hui 🏍️ Bike Problem #shorts #viral",
@@ -14974,7 +15246,17 @@
         "original_title": "bike ko kaya Howa 🤔 #shotsfeed #viralshot #shotsvideo #youtubeshorts #shorts #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Bike Ko Kya Hua 🏍️🤔 Bike Maintenance #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 7,
         "view_count": 1100000,
@@ -14983,17 +15265,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Bike Ko Kya Hua 🏍️🤔 Bike Maintenance #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Achanak Bike Ko Kya Hua? 🤔 #viralshorts",
+            "description": "Dekhiye chalte chalte bike mein kya problem aagayi. Aise hi trending desi shorts aur reels ke liye juday rahein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 7,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "DLixvlyjmr4": {
         "title": "Sab Ko Dara Diya 😱 Prank Video #shorts #viral",
@@ -15001,7 +15290,17 @@
         "original_title": "sab ka dra diya 😱 #shorts #viralvideos #shortsfeed #shotsvideo #trending #foryou #viral #youtuber",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Sab Ko Dara Diya 😱 Prank Video #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 10,
         "view_count": 4000,
@@ -15010,17 +15309,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Sab Ko Dara Diya 😱 Prank Video #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Sabko Dara Diya Achanak! 😱 #viralshorts",
+            "description": "Dekhiye is video mein kaise achanak sabhi ko dara diya gaya. Yeh short video dekh kar aap bhi hairan reh jayenge.",
+            "keywords": [
+                "viral shorts",
+                "funny video",
+                "trending pakistan",
+                "desi reels",
+                "hindi shorts",
+                "urdu"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 10,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "8DIIpZ-W1Ck": {
         "title": "Everyone Knowledge Cancelled 🤔 Funny Comedy #shorts #comedy",
@@ -15028,7 +15334,17 @@
         "original_title": "Everyone's knowledge has been cancelled 🤔 #funny #comedy #youtubeshorts #shorts #trending",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Everyone Knowledge Cancelled 🤔 Funny Comedy #shorts #comedy",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 23,
         "view_count": 5300,
@@ -15037,17 +15353,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Everyone Knowledge Cancelled 🤔 Funny Comedy #shorts #comedy",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Sabka Knowledge Cancel Ho Gaya! 🤔 #funnyvideo",
+            "description": "Dekhiye yeh mazedar family funny moments video jisme sabka knowledge cancel ho gaya. Hasi rokna mushkil ho jayega.",
+            "keywords": [
+                "family funny moments",
+                "funny video",
+                "viral shorts",
+                "desi comedy",
+                "reels",
+                "trending pakistan"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 23,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "vaCnt2bYbZI": {
         "title": "Kitna Khelain Ge Ye Log 😱🤔 Funny Game #shorts #comedy",
@@ -15082,7 +15405,17 @@
         "original_title": "I am back 🤔 #viral #shorts #youtubeshorts #trending #funny #comedy",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "I Am Back 🤔 Funny Comedy #shorts #trending",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 16,
         "view_count": 3700,
@@ -15091,17 +15424,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "I Am Back 🤔 Funny Comedy #shorts #trending",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "I Am Back With Funny Twist! 🤔 #funnyvideo",
+            "description": "Dekhiye is comeback video mein family funny moments aur zabardast comedy. Hasi rokna bilkul mushkil hoga.",
+            "keywords": [
+                "family funny moments",
+                "funny video",
+                "viral shorts",
+                "trending pakistan",
+                "desi comedy",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 16,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "ocq3sc9Aeu0": {
         "title": "Sabse Zyada Kisne Loota 😱 Funny Short #shorts #viral",
@@ -15109,7 +15449,17 @@
         "original_title": "Sabse zayada kisne louta 😱😱😱 #shortsfeed #viralshorts #shorts #youtuber #funny #youtubeshorts ",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Sabse Zyada Kisne Loota 😱 Funny Short #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 120,
         "view_count": 241,
@@ -15118,17 +15468,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Sabse Zyada Kisne Loota 😱 Funny Short #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Sabse Zyada Kisne Loota? 😱 #funnyvideo",
+            "description": "Dekhiye family funny moments jahan sabse zyada loot kisne machai. Entertainment aur comedy se bhari short video.",
+            "keywords": [
+                "family funny moments",
+                "funny video",
+                "viral shorts",
+                "trending pakistan",
+                "desi comedy",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 120,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "ROrx4Ssurjs": {
         "title": "Rickshaw Start Nahi Ho Raha 😱 Rickshaw Problem #shorts #viral",
@@ -15136,7 +15493,17 @@
         "original_title": "Risha dose not start pai kolo 🤔 #shortsfeed #viralshot #shotsvideo #youtuber #shots #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Rickshaw Start Nahi Ho Raha 😱 Rickshaw Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 6600,
@@ -15145,17 +15512,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Rickshaw Start Nahi Ho Raha 😱 Rickshaw Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Rikshaw Start Kyon Nahi Ho Raha? 🤔 #viralshorts",
+            "description": "Dekhiye jab rikshaw start nahi hua toh kya hungama hua. Desi funny reels aur viral shorts ka maza lein.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "funny video",
+                "reels",
+                "desi vlog",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "Tjau4Ey4Wi0": {
         "title": "Gareeb Bache Ko Kya Hua 😱😭 Emotional Short #shorts #viral",
@@ -15163,7 +15537,17 @@
         "original_title": "greeb bache ko kuch Kiya 😱😭 #shotsfeed #viralshot #shotsvideo #funny #youtubeshorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Bache Ko Kya Hua 😱😭 Emotional Short #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 8900,
@@ -15172,17 +15556,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Bache Ko Kya Hua 😱😭 Emotional Short #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Bache Ke Sath Kya Hua? 😱 #funnyvideo",
+            "description": "Dekhiye is chote se clip mein kya hua aur sabka reaction kaisa tha. Family funny moments aur desi reels enjoy karein.",
+            "keywords": [
+                "family funny moments",
+                "funny video",
+                "viral shorts",
+                "trending pakistan",
+                "desi",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "NhE8xF1QuFc": {
         "title": "Best Family Shorts 2026 Special 🏆 Family Vlogs #shorts #live",
@@ -15190,26 +15581,43 @@
         "original_title": "Best family Shorts 2026! (6-Hour Special) 🏆 #livefeed #viralshot #shotsvideo #youtuber #live",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Best Family Shorts 2026 Special 🏆 Family Vlogs #shorts #live",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 24287,
-        "view_count": 241,
+        "view_count": 243,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Best Family Shorts 2026 Special 🏆 Family Vlogs #shorts #live",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Best Family Funny Moments Special! 🏆 #viralshorts",
+            "description": "Dekhiye sabse mazedar family comedy moments is special collection mein. Hasi aur entertainment se bhari zabardast video.",
+            "keywords": [
+                "family funny moments",
+                "funny video",
+                "viral shorts",
+                "trending pakistan",
+                "desi",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 24287,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "vkeclZ-K5kw": {
         "title": "Park Mein Hassan Ki Bike Start Nahi Hui 🏍️ #shorts #viral",
@@ -15271,7 +15679,17 @@
         "original_title": "greeb ki bike 🏍️ start ni hoi hi 😱 #shotsfeed #viralshorts #shotsvideo #youtuber #shots #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Start Nahi Hui 🏍️😱 Bike Problem #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 6,
         "view_count": 17000,
@@ -15280,17 +15698,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Start Nahi Hui 🏍️😱 Bike Problem #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ki Bike Start Kyon Nahi Hui? 🏍️ #viralshorts",
+            "description": "Dekhiye jab gareeb ki bike start nahi hui toh kya hua. Desi viral shorts aur mazedar videos enjoy karein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "urdu"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 6,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "2KnkvK-PKYU": {
         "title": "Road Par Bike Ko Kya Hua 🏍️😱 Road Safety #shorts #viral",
@@ -15298,7 +15723,17 @@
         "original_title": "Rode per bike kaya Howa 😱🤔 #shotsfeed #viralshot #shotsvideo #youtuber #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Road Par Bike Ko Kya Hua 🏍️😱 Road Safety #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 46000,
@@ -15307,17 +15742,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Road Par Bike Ko Kya Hua 🏍️😱 Road Safety #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Road Par Bike Ko Kya Hua? 😱 #viralshorts",
+            "description": "Dekhiye road par bike ke sath achanak kya hua. Aise hi majedar desi reels aur trending videos dekhte rahiye.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi shorts"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "o1SizKtFrPw": {
         "title": "Gareeb Aaya Bike Par 🏍️😭 Gareeb Ki Bike #shorts #viral",
@@ -15325,7 +15767,17 @@
         "original_title": "greeb Aya bike per 😭😱😱😱 #shortsfeed #viralshorts #youtuber #ytshorts #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Aaya Bike Par 🏍️😭 Gareeb Ki Bike #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 13000,
@@ -15334,17 +15786,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Aaya Bike Par 🏍️😭 Gareeb Ki Bike #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Aaya Bike Par Unexpectedly! 😱 #viralshorts",
+            "description": "Dekhiye jab gareeb bike par aaya toh kya dramatic scene hua. Desi shorts aur viral reels follow karein.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi shorts",
+                "urdu"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "izEIavv_kL0": {
         "title": "Gareeb Ki Bike Gali Mein 🏍️😱 Gareeb Ki Bike #shorts #viral",
@@ -15352,7 +15811,17 @@
         "original_title": "greeb ki bike gali me 😱 #shortsfeed #viralshorts #youtuber #reels #ytshorts",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Gali Mein 🏍️😱 Gareeb Ki Bike #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 17000,
@@ -15361,17 +15830,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Gali Mein 🏍️😱 Gareeb Ki Bike #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ki Bike Gali Mein Aagayi 😱 #viralshorts",
+            "description": "Dekhiye jab gareeb ki bike gali mein aayi toh sabka reaction kaisa tha. Desi viral shorts aur reels enjoy karein.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi shorts",
+                "urdu"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "eoqDih5DVA8": {
         "title": "Kaisi Gali Mein Bike Aayi 🏍️😱 Street Riding #shorts #viral",
@@ -15379,7 +15855,17 @@
         "original_title": "kasi gali me bike aye 🏍️😱 #shortsfeed #viralshorts #ytshorts #youtuber #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Kaisi Gali Mein Bike Aayi 🏍️😱 Street Riding #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 28000,
@@ -15388,17 +15874,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Kaisi Gali Mein Bike Aayi 🏍️😱 Street Riding #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Kaisi Gali Mein Bike Aagayi! 🏍️😱 #viralshorts",
+            "description": "Dekhiye tang gali mein bike lane par kya ajeeb situation hui. Trending pakistan desi reels aur shorts dekhein.",
+            "keywords": [
+                "viral shorts",
+                "bike video",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "N0wUPcl8hW0": {
         "title": "Best Family Shorts Of All Time 🏆 Family Vlogs #shorts #live",
@@ -15406,7 +15899,17 @@
         "original_title": "Best family Shorts of All Time! (6-Hour Special) 🏆 #shotsfeed #viralshot #shotsvideo #youtuber #live",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Best Family Shorts Of All Time 🏆 Family Vlogs #shorts #live",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 25260,
         "view_count": 1900,
@@ -15415,17 +15918,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Best Family Shorts Of All Time 🏆 Family Vlogs #shorts #live",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Best Family Shorts Compilation! 🏆 #funnyvideo",
+            "description": "Enjoy karein best family funny moments aur non-stop comedy moments. Sabse mazedar desi family shorts ka maza lein.",
+            "keywords": [
+                "family funny moments",
+                "funny video",
+                "viral shorts",
+                "desi comedy",
+                "trending pakistan",
+                "reels"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 25260,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "uB2ifapRC44": {
         "title": "Gareeb Bachon Ki Wish Poori Ki 😱 Help Poor #shorts #viral",
@@ -15460,7 +15970,17 @@
         "original_title": "Greeb bacho ko kiya khush Kiya 😱 #shortsfeed #viralshorts #ytshorts #youtuber #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Bachon Ko Kaise Khush Kiya 😱 Help Poor #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 7,
         "view_count": 19000,
@@ -15469,17 +15989,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Bachon Ko Kaise Khush Kiya 😱 Help Poor #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Bachon Ko Kaise Khush Kiya? 😱 #viralshorts",
+            "description": "Dekhiye is chote se clip mein gareeb bachon ke chehre par muskaan kaise aayi. Desi heartwarming moments ke sath enjoy karein.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "desi vlog",
+                "hindi shorts",
+                "urdu reels",
+                "funny video"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 7,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "kkl44mIWKHo": {
         "title": "Gareeb Bachon Ki Gaadi Aayi 🚗 Gareeb Bachon #shorts #viral",
@@ -15487,7 +16014,17 @@
         "original_title": "greeb bacho ki gari ayi 🤔 #shortsfeed #viralshorts #ytshorts #youtuber #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Bachon Ki Gaadi Aayi 🚗 Gareeb Bachon #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 7,
         "view_count": 14000,
@@ -15496,17 +16033,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Bachon Ki Gaadi Aayi 🚗 Gareeb Bachon #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Bachon Ki Gadi Aagayi! 🤔 #viralshorts",
+            "description": "Dekhiye jab gareeb bachon ke paas gadi aayi toh unka kya reaction tha. Trending desi short videos zaroor dekhein.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "desi vlog",
+                "reels",
+                "hindi shorts",
+                "urdu"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 7,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "N6zCqKAfC_U": {
         "title": "Gareeb Bachon Ko Free Jhoola Mila 🛝😱 Help Poor #shorts #viral",
@@ -15514,7 +16058,17 @@
         "original_title": "greeb bacho ko jula mila Free me 😱 #shortsfeed #viralshorts #ytshorts #youtuber #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Bachon Ko Free Jhoola Mila 🛝😱 Help Poor #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 5,
         "view_count": 43000,
@@ -15523,17 +16077,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Bachon Ko Free Jhoola Mila 🛝😱 Help Poor #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Bachon Ko Jhula Mila Free Mein 😱 #viralshorts",
+            "description": "Dekhiye free jhula milne par bachon ki khushi ka thikana na raha. Trending desi short videos ke liye subscribe karein.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "desi reels",
+                "hindi shorts",
+                "urdu",
+                "funny video"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 5,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "_gDxODx4vok": {
         "title": "Gareeb Ki Bike Aur Family 🏍️😱 Gareeb Ki Bike #shorts #viral",
@@ -15541,7 +16102,17 @@
         "original_title": "greeb ki bike or family 😱 #shortsfeed #ytshorts #youtuber #viralshort #reels",
         "published_at": null,
         "description": "",
-        "seo_history": [],
+        "seo_history": [
+            {
+                "title": "Gareeb Ki Bike Aur Family 🏍️😱 Gareeb Ki Bike #shorts #viral",
+                "description": "",
+                "keywords": [],
+                "prompt_version": 0,
+                "updated_at": "2026-10-24T02:02:15.927131Z",
+                "model": null,
+                "source_tags": []
+            }
+        ],
         "last_synced": null,
         "duration_seconds": 7,
         "view_count": 865000,
@@ -15550,17 +16121,24 @@
         "status": "active",
         "missing_count": 0,
         "seo": {
-            "title": "Gareeb Ki Bike Aur Family 🏍️😱 Gareeb Ki Bike #shorts #viral",
-            "description": "",
-            "keywords": [],
-            "prompt_version": 0,
-            "updated_at": "2026-10-24T02:02:15.927131Z",
-            "model": null,
+            "title": "Gareeb Ki Bike Aur Family Twist! 😱 #viralshorts",
+            "description": "Dekhiye gareeb ki bike aur family ka yeh emotional aur viral moment. Aise trending pakistan shorts zaroor dekhein.",
+            "keywords": [
+                "viral shorts",
+                "trending pakistan",
+                "reels",
+                "desi vlog",
+                "hindi shorts",
+                "urdu"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "upload_date": null,
         "duration": 7,
-        "last_refreshed": "2026-10-24"
+        "last_refreshed": "2026-11-12"
     },
     "6MAaRYTJjCg": {
         "title": "Gareeb Bachon Ko Kya Hua? Funny Short #shorts #funny",
@@ -21220,7 +21798,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 4,
-        "view_count": 7300,
+        "view_count": 7400,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -21512,7 +22090,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 104,
-        "view_count": 5500,
+        "view_count": 5700,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -21581,7 +22159,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 5,
-        "view_count": 240000,
+        "view_count": 243000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -21720,7 +22298,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 5,
-        "view_count": 128000,
+        "view_count": 131000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -21822,7 +22400,7 @@
         "seo_history": [],
         "last_synced": null,
         "duration_seconds": 23,
-        "view_count": 75000,
+        "view_count": 77000,
         "seo_refresh_pending": false,
         "tags": [],
         "status": "active",
@@ -25154,7 +25732,7 @@
         "last_synced": null,
         "published_at": null,
         "duration_seconds": 5,
-        "view_count": 27000,
+        "view_count": 28000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25286,7 +25864,7 @@
         "upload_date": null,
         "duration_seconds": 5,
         "duration": 5,
-        "view_count": 86000,
+        "view_count": 87000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25385,7 +25963,7 @@
         "upload_date": null,
         "duration_seconds": 5,
         "duration": 5,
-        "view_count": 47000,
+        "view_count": 48000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25419,7 +25997,7 @@
         "upload_date": null,
         "duration_seconds": 17,
         "duration": 17,
-        "view_count": 62000,
+        "view_count": 63000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25685,7 +26263,7 @@
         "upload_date": null,
         "duration_seconds": 12,
         "duration": 12,
-        "view_count": 41000,
+        "view_count": 42000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25718,7 +26296,7 @@
         "upload_date": null,
         "duration_seconds": 6,
         "duration": 6,
-        "view_count": 25000,
+        "view_count": 26000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25786,7 +26364,7 @@
         "upload_date": null,
         "duration_seconds": 12,
         "duration": 12,
-        "view_count": 40000,
+        "view_count": 41000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25888,7 +26466,7 @@
         "upload_date": null,
         "duration_seconds": 5,
         "duration": 5,
-        "view_count": 28000,
+        "view_count": 29000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25922,7 +26500,7 @@
         "upload_date": null,
         "duration_seconds": 12,
         "duration": 12,
-        "view_count": 4100,
+        "view_count": 4600,
         "tags": [],
         "description": "",
         "status": "active",
@@ -25956,7 +26534,7 @@
         "upload_date": null,
         "duration_seconds": 11,
         "duration": 11,
-        "view_count": 38000,
+        "view_count": 39000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -26022,7 +26600,7 @@
         "upload_date": null,
         "duration_seconds": 13,
         "duration": 13,
-        "view_count": 32000,
+        "view_count": 33000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -26055,7 +26633,7 @@
         "upload_date": null,
         "duration_seconds": 12,
         "duration": 12,
-        "view_count": 37000,
+        "view_count": 38000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -26087,7 +26665,7 @@
         "upload_date": null,
         "duration_seconds": 13,
         "duration": 13,
-        "view_count": 33000,
+        "view_count": 34000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -26121,7 +26699,7 @@
         "upload_date": null,
         "duration_seconds": 11,
         "duration": 11,
-        "view_count": 33000,
+        "view_count": 36000,
         "tags": [],
         "description": "",
         "status": "active",
@@ -26143,6 +26721,38 @@
             "prompt_version": 2,
             "updated_at": "2026-11-10T23:58:24.643005Z",
             "model": "gemini-3.5-flash-lite",
+            "source_tags": []
+        },
+        "seo_refresh_pending": false
+    },
+    "sMPkfy_Whkk": {
+        "original_title": "Kaya greeb bachi ko mely shose 🥾🤔 #shortvideo #viralshorts #shortsfeed #shorts #viral",
+        "seo_history": [],
+        "last_synced": null,
+        "published_at": null,
+        "upload_date": null,
+        "duration_seconds": 12,
+        "duration": 12,
+        "view_count": 9500,
+        "tags": [],
+        "description": "",
+        "status": "active",
+        "missing_count": 0,
+        "last_refreshed": "2026-11-12",
+        "seo": {
+            "title": "Kya Gareeb Bachi Ko Shoes Mil Gaye? 🥾 #viralshorts",
+            "description": "Dekhiye is emotional video mein kya gareeb bachi ko naye shoes mil paye. Aise desi viral shorts dekhne ke liye channel ko subscribe karein.",
+            "keywords": [
+                "viral shorts",
+                "desi vlog",
+                "hindi shorts",
+                "urdu viral",
+                "trending pakistan",
+                "funny video"
+            ],
+            "prompt_version": 2,
+            "updated_at": "2026-11-12T01:26:21.553719Z",
+            "model": "gemini-3.6-flash",
             "source_tags": []
         },
         "seo_refresh_pending": false
