@@ -307,12 +307,12 @@ footer{text-align:center;padding:20px;font-size:.78rem;color:var(--sub);
 """
 
 def _header(active_topic: str = "") -> str:
-    topic_links = "\n".join(
-        f'<a href="{SITE_BASE_URL}topics/{t}/"'
-        f'{" style=\\"background:var(--accent);color:#fff\\"" if t==active_topic else ""}>'
-        f'{t.replace("-"," ").title()}</a>'
-        for t in TOPICS
-    )
+    def _topic_link(t: str) -> str:
+        style = ' style="background:var(--accent);color:#fff"' if t == active_topic else ""
+        label = t.replace("-", " ").title()
+        return f'<a href="{SITE_BASE_URL}topics/{t}/"{style}>{label}</a>'
+
+    topic_links = "\n".join(_topic_link(t) for t in TOPICS)
     return f"""
 <header>
   <h1>Hassan Paracha</h1>
