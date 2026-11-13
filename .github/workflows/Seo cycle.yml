@@ -1,0 +1,85 @@
+name: Global SEO Rolling Cycle
+
+on:
+  schedule:
+    - cron: "0 1 * * *"   # 01:00 UTC daily  (~6 AM PKT)
+  workflow_dispatch:        # manual trigger
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      GEMINI_API_KEY:   ${{ secrets.GEMINI_API_KEY }}
+      YT_COOKIES_B64:   ${{ secrets.YT_COOKIES_B64 }}   # base64-encoded cookies.txt
+      SYNC_SLICE_SIZE:  "1000"
+      REFRESH_PER_DAY:  "150"
+      DRY_RUN:          "0"
+      SITE_BASE_URL:    "https://hassan-paracha.github.io/my-channel-seo/"
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # ── 2. Python ──────────────────────────────────────────────────────────
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      # ── 3. Dependencies ────────────────────────────────────────────────────
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pytrends
+
+      # ── 4. Tests ───────────────────────────────────────────────────────────
+      - name: Run tests
+        run: python -m pytest
+
+      # ── 5. Engine ──────────────────────────────────────────────────────────
+      - name: Run rolling engine
+        run: python engine.py
+
+      # ── 6. Persist DB ──────────────────────────────────────────────────────
+      - name: Commit and push database state
+        run: |
+          git config user.name  "SEO-Cycle-Bot"
+          git config user.email "bot@seo.com"
+          git add video_db.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Daily video DB refresh: $(date -u +%F)"
+            git push
+          fi
+
+      # ── 7. GitHub Pages ────────────────────────────────────────────────────
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  # ── Deploy job ─────────────────────────────────────────────────────────────
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
