@@ -16,11 +16,12 @@ site, commits its database state, and deploys it to GitHub Pages.
    `last_synced` first. Detail refreshes stop on the configured time budget or a
    YouTube bot-check response. The job does not use or store cookies.
 4. A daily queue prioritizes videos without SEO, then stale SEO, refreshing up
-   to 35 records per run. Gemini receives source metadata—not previous SEO—and
+   to 180 records per run (5 Gemini requests of 40 videos); with MIN_REFRESH_DAYS=0 the
+   oldest-optimized videos are always refreshed first, so the library rolls over every few days. Gemini receives source metadata—not previous SEO—and
    successful refreshes rotate the old SEO object into a three-entry history.
    YouTube autocomplete suggestions are optional best-effort keyword ideas.
 5. `site/` contains listing/topic pages and `/v/<id>/` pages for videos with SEO,
-   plus a sitemap and robots.txt. Video embeds load only after a click.
+   plus a sitemap and robots.txt. Thumbnails on every page play the video in place (the embed loads only after a click).
 6. GitHub Actions commits `video_db.json` and deploys the site. Workflow
    dispatch supports `sync_slice_size`, `refresh_per_day`, and `dry_run`.
 
@@ -56,7 +57,7 @@ Environment variables:
 - `GEMINI_DAILY_REQUEST_LIMIT` — per-model request cap, default `18`.
 - `SYNC_SLICE_SIZE` — details per run, default `50`.
 - `SYNC_TIME_BUDGET_MIN` — detail-sync time budget, default `20`.
-- `REFRESH_PER_DAY` — SEO records per run, default `35`.
+- `REFRESH_PER_DAY` — SEO records per run, default `180`.
 - `MIN_REFRESH_DAYS` — minimum age for ordinary refreshes, default `21`.
 - `SEO_USE_SEARCH_GROUNDING=1` — opt in to Gemini Google Search grounding.
 - `SITE_BASE_URL` — absolute site URL used by canonical tags and sitemap.
