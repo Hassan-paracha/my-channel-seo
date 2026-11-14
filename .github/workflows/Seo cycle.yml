@@ -32,7 +32,6 @@ jobs:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       SYNC_SLICE_SIZE: ${{ inputs.sync_slice_size || '50' }}
       REFRESH_PER_DAY: ${{ inputs.refresh_per_day || '180' }}
-      MIN_REFRESH_DAYS: "0"   # always refresh the oldest-optimized videos first
       DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
       SITE_BASE_URL: "https://hassan-paracha.github.io/my-channel-seo/"
 
@@ -54,6 +53,8 @@ jobs:
         run: python -m pytest
 
       - name: Run rolling engine
+        env:
+          MIN_REFRESH_DAYS: "0"   # always refresh the oldest-optimized videos first
         run: python engine.py
 
       - name: Commit and push database state
