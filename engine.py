@@ -40,9 +40,9 @@ SITE_BASE_URL = (
 ).rstrip("/") + "/"
 BATCH_SIZE = int(os.getenv("BATCH_SIZE") or "40")
 VIDEOS_PER_PAGE = 48
-# Existing records in video_db.json are at version 2; bump this only when the
-# prompt changes enough that every video should be regenerated.
-PROMPT_VERSION = 2
+# Bump when the prompt changes enough that every video should be regenerated.
+# 3 = trend-aware prompt; makes the whole library eligible for one full pass.
+PROMPT_VERSION = 3
 
 DEFAULT_GEMINI_MODELS = "gemini-3.5-flash-lite,gemini-3.6-flash,gemini-3.5-flash"
 
@@ -462,9 +462,14 @@ def _detail_sync(db: dict) -> set:
 
 # -- TRENDING KEYWORDS -------------------------------------------------------
 
+_autocomplete_failures = 0
+
+
 def _autocomplete_suggestions(seeds: list) -> list:
-    """Best-effort YouTube autocomplete ideas. Never raises."""
-    if _dry_run():
+    """Best-effort YouTube autocomplete ideas. Never raises; gives up after
+    repeated failures so a blocked network can't slow a large run."""
+    global _autocomplete_failures
+    if _dry_run() or _autocomplete_failures >= 5:
         return []
     results: list = []
     for seed in seeds:
@@ -481,8 +486,9 @@ def _autocomplete_suggestions(seeds: list) -> list:
             if isinstance(data, list) and len(data) > 1:
                 for item in data[1][:6]:
                     results.append(str(item[0] if isinstance(item, list) else item))
+            _autocomplete_failures = 0
         except Exception:
-            continue
+            _autocomplete_failures += 1
     return results
 
 
@@ -521,6 +527,14 @@ def _dedupe(terms) -> list:
     return out
 
 
+def _good_term(term: str) -> bool:
+    """Drop long, sentence-like or self-repeating trend terms."""
+    words = term.split()
+    half = len(words) // 2
+    repeated = half > 0 and len(words) % 2 == 0 and words[:half] == words[half:]
+    return len(words) <= 5 and len(term) <= 40 and not repeated
+
+
 def get_trending_keywords() -> str:
     """
     Comma separated string of 20 unique, currently trending search terms for
@@ -552,7 +566,7 @@ def get_trending_keywords() -> str:
                 for kind in ("top", "rising"):
                     related_terms += _query_values((data or {}).get(kind), 2)
 
-        live = _dedupe(trending + related_terms)[:15]
+        live = [t for t in _dedupe(trending + related_terms) if _good_term(t)][:15]
         if not live:
             return TRENDING_KEYWORDS_FALLBACK
         return ", ".join(_dedupe(live + _FALLBACK_KEYWORD_LIST)[:20])
@@ -813,7 +827,7 @@ def _refresh_seo(db: dict, force_ids=None, trends=None) -> int:
         print("GEMINI_API_KEY not set - skipping SEO refresh.")
         return 0
 
-    limit = _env_int("REFRESH_PER_DAY", 35)
+    limit = _env_int("REFRESH_PER_DAY", 180)
     queue = _seo_queue(db, limit, now=_now(), force_ids=force_ids)
     if not queue:
         print("SEO queue is empty.")
@@ -946,11 +960,10 @@ header a{color:var(--accent);text-decoration:none;font-size:.85rem;font-weight:6
   gap:20px;padding:20px;max-width:1400px;margin:0 auto}
 .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
   overflow:hidden;display:flex;flex-direction:column}
-.thumb{position:relative;display:block;padding-bottom:56.25%;background:#000}
-.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumb{position:relative;display:block;padding-bottom:56.25%;background:#000;cursor:pointer}
+.thumb img,.thumb iframe{position:absolute;border:0;inset:0;width:100%;height:100%;object-fit:cover}
 .play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  background:rgba(0,0,0,.3);font-size:2.5rem;color:#fff;opacity:0;transition:opacity .2s}
-.thumb:hover .play-btn{opacity:1}
+  background:rgba(0,0,0,.25);font-size:2.5rem;color:#fff;opacity:.9;pointer-events:none}
 .info{padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:6px}
 .info h3{font-size:.9rem;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;
   -webkit-box-orient:vertical;overflow:hidden}
@@ -982,15 +995,16 @@ footer{text-align:center;padding:20px;font-size:.78rem;color:var(--sub);border-t
 @media(max-width:480px){.grid{grid-template-columns:1fr;padding:12px}}
 """
 
-_EMBED_SCRIPT = (
-    '<script>(function(){var e=document.querySelector(".embed");if(!e)return;'
-    'function load(){var f=document.createElement("iframe");'
-    'f.src="https://www.youtube-nocookie.com/embed/"+encodeURIComponent(e.dataset.video)'
-    '+"?autoplay=1&rel=0";f.title=e.dataset.title||"Video";'
+_PLAYER_SCRIPT = (
+    '<script>(function(){function play(t){var f=document.createElement("iframe");'
+    'f.src="https://www.youtube-nocookie.com/embed/"+encodeURIComponent(t.dataset.video)'
+    '+"?autoplay=1&rel=0";f.title=t.dataset.title||"Video";'
     'f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;'
-    'e.replaceChildren(f);}'
-    'e.addEventListener("click",load);'
-    'e.addEventListener("keydown",function(k){if(k.key==="Enter"||k.key===" "){k.preventDefault();load();}});'
+    't.removeAttribute("data-video");t.removeAttribute("role");t.replaceChildren(f);}'
+    'document.addEventListener("click",function(e){var t=e.target.closest("[data-video]");'
+    'if(t){e.preventDefault();play(t);}});'
+    'document.addEventListener("keydown",function(e){if(e.key!=="Enter"&&e.key!==" ")return;'
+    'var t=e.target.closest&&e.target.closest("[data-video]");if(t){e.preventDefault();play(t);}});'
     '})();</script>'
 )
 
@@ -1049,7 +1063,7 @@ def _html_shell(title: str, desc: str, url: str, body: str,
         f'<meta property="og:description" content="{_e(desc)}">'
         f'<meta property="og:url" content="{_e(url)}">'
         f'<meta property="og:type" content="{og_type}">{image}'
-        f"<style>{_CSS}</style></head><body>{body}"
+        f"<style>{_CSS}</style></head><body>{body}{_PLAYER_SCRIPT}"
         f"<footer><p>&copy; {date.today().year} Hassan Paracha &middot; "
         f'<a href="{SITE_BASE_URL}sitemap.xml">Sitemap</a> &middot; '
         f'<a href="https://www.youtube.com/{CHANNEL_HANDLE}" target="_blank" '
@@ -1095,18 +1109,18 @@ def _card_html(vid: str, data: dict, prefix: str = "", base_url: str = "",
     base_url = base_url or SITE_BASE_URL
     title, desc = _video_fields(vid, data)
     page_href = f"{prefix}v/{vid}/"
-    yt_url = f"https://www.youtube.com/watch?v={vid}"
     thumb = f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
     ld = (f'<script type="application/ld+json">'
           f'{_json_ld(_video_object(vid, data, base_url))}</script>') if json_ld else ""
     snippet = f"<p>{_e(desc[:120])}</p>" if desc else ""
     return (
         f'<article class="card">{ld}'
-        f'<a href="{page_href}" class="thumb">'
+        f'<div class="thumb" data-video="{_e(vid)}" data-title="{_e(title)}" '
+        f'role="button" tabindex="0" aria-label="Play {_e(title)}">'
         f'<img src="{thumb}" alt="{_e(title)}" loading="lazy" width="320" height="180">'
-        f'<span class="play-btn">&#9654;</span></a>'
+        f'<span class="play-btn">&#9654;</span></div>'
         f'<div class="info"><h3><a href="{page_href}">{_e(title)}</a></h3>{snippet}</div>'
-        f'<a class="btn" href="{yt_url}" target="_blank" rel="noopener">Watch on YouTube</a>'
+        f'<a class="btn" href="{page_href}">Details</a>'
         f"</article>"
     )
 
@@ -1163,8 +1177,7 @@ def _build_video_page(vid: str, data: dict, related: list, base_url: str,
         f'role="button" tabindex="0" aria-label="Play video">'
         f'<img src="{thumb}" alt="{_e(title)}" width="480" height="360">'
         f'<span class="play-btn">&#9654;</span></div>'
-        f"{_EMBED_SCRIPT}"
-        f"<h1>{_e(title)}</h1>"
+                f"<h1>{_e(title)}</h1>"
         f'<p class="desc">{_e(desc)}</p>'
         + (f'<div class="tags">{tags_html}</div>' if tags_html else "")
         + f'<a class="btn" href="{yt_url}" target="_blank" rel="noopener">'
